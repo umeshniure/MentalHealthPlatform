@@ -109,6 +109,16 @@ class Appointment(models.Model):
     class Meta:
         ordering = ['-created_on']
 
+class AppointmentRequest(models.Model):
+    appointment = models.ForeignKey(Appointment, on_delete=models.CASCADE)
+    doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE)
+    accepted = models.BooleanField(default=False)
+    created_date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.appointment} - {self.doctor}"
+    
+
 
 class Review(models.Model):
     # user needs to be added
