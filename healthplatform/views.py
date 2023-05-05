@@ -8,7 +8,7 @@ from healthplatform.forms import AppointmentForm
 from .models import CustomUser, Doctor, Patient, Review, Appointment
 from django.contrib.auth.decorators import login_required
 
-from .forms import PatientForm
+from .forms import PatientForm, DoctorForm
 
 
 # Create your views here.
@@ -20,23 +20,19 @@ def home(request):
 
 def register_doctor(request):
     if request.method == 'POST':
-        email = request.POST['email']
-        phone = request.POST['phone']
-        password = request.POST['password']
-        first_name = request.POST['first_name']
-        last_name = request.POST['last_name']
-        specialty = request.POST['specialty']
-        dob = request.POST['dob']
-        address = request.POST['address']
-        user = CustomUser.objects.create_user(email=email, password=password, first_name=first_name,
-                                              last_name=last_name, dob=dob, phone=phone, address=address)
-        doctor = Doctor.objects.create(user=user, specialty=specialty)
+        page = 'register_doctor'
+    form = DoctorForm()
 
-        template = loader.get_template('index.html')
-        return HttpResponse(template.render())
-    else:
-        template = loader.get_template('register_doctor.html')
-        return HttpResponse(template.render())
+    if request.method == 'POST':
+        
+        form = DoctorForm(request.POST)
+
+        if form.is_valid():
+            form.save()
+            return redirect('login/')
+        
+    context = {'page' : page, 'form' : form}
+    return render(request, 'register_doctor.html', context)
 
 
 def register_patient(request):
