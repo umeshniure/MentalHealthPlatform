@@ -8,6 +8,8 @@ from healthplatform.forms import AppointmentForm
 from .models import CustomUser, Doctor, Patient, Review, Appointment
 from django.contrib.auth.decorators import login_required
 
+from .forms import PatientForm
+
 
 # Create your views here.
 
@@ -38,32 +40,20 @@ def register_doctor(request):
 
 
 def register_patient(request):
-    if request.method == 'POST':
-        # if request.method == 'POST':
-        # review = Review.objects.create(
-        #     user = request.user,
-        #     product  = product,
-        #     star = request.POST.get('star'),
-        #     comment = request.POST.get('comment')
-        # )
-        # return redirect('product', pk = product.id)
-        
-        email = request.POST['email']
-        phone = request.POST['phone']
-        password = request.POST['password']
-        first_name = request.POST['first_name']
-        last_name = request.POST['last_name']
-        dob = request.POST['dob']
-        address = request.POST['address']
-        user = CustomUser.objects.create_user(email=email, password=password, first_name=first_name,
-                                              last_name=last_name, dob=dob, phone=phone, address=address)
-        patient = Patient.objects.create(user=user)
 
-        template = loader.get_template('.html')
-        return HttpResponse(template.render())
-    else:
-        template = loader.get_template('register_patient.html')
-        return HttpResponse(template.render())
+    page = 'register_patient'
+    form = PatientForm()
+
+    if request.method == 'POST':
+        
+        form = PatientForm(request.POST)
+
+        if form.is_valid():
+            form.save()
+            return redirect('login/')
+        
+    context = {'page' : page, 'form' : form}
+    return render(request, 'register_patient.html', context)
 
 
 @login_required
