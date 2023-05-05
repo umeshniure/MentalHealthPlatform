@@ -48,8 +48,12 @@
 =======
                 <input type="text" id="firstname" name="firstname" placeholder="Your First Name:"
                     onkeyup="validateFirstname()" />
+<<<<<<< HEAD
 >>>>>>> 296a69f9be9d63c12169a74421590e70ce9b34fa
                 <span id="username-error"></span>
+=======
+                <span id="firstname-error"></span>
+>>>>>>> frontend
                 <br>
             </div>
 
@@ -67,8 +71,14 @@
             </div>
 
             <div class="form-input">
+<<<<<<< HEAD
                 <input type="text" id="fullname" name="address" placeholder="Your Address:" onkeyup="validateName()" />
                 <span id="fullname-error"></span>
+=======
+                <input type="text" id="address" name="address" placeholder="Your Address:"
+                    onkeyup="validateAddress()" />
+                <span id="address-error"></span>
+>>>>>>> frontend
                 <br>
             </div>
 
@@ -101,10 +111,14 @@
             <div class="form-input">
                 <input placeholder="Date of Birth:" class="textbox-n" type="text" onfocus="(this.type='date')" id="date"
 <<<<<<< HEAD
+<<<<<<< HEAD
                     name="dob" />
 =======
                     name="date" onkeyup="validateNumber()" />
 >>>>>>> 296a69f9be9d63c12169a74421590e70ce9b34fa
+=======
+                    name="date" onkeyup="validateDate()" />
+>>>>>>> frontend
 
                 <span id="date-error"></span>
                 <br>
@@ -161,8 +175,17 @@
 
 <!--            </div>-->
 
+<<<<<<< HEAD
 <!--            <div class="form-input">-->
 <!--                <input placeholder="Problem Description" class="textarea" type="textarea" id="date" name="Problem" />-->
+=======
+            <div class="form-input">
+                <input placeholder="Problem Description" class="textarea" type="textarea" id="problem" name="problem"
+                    onkeyup="validateProblem()" />
+                <span id="problem-error"></span>
+                <br>
+            </div>
+>>>>>>> frontend
 
 <!--                &lt;!&ndash; <span id="coupon-error"></span> &ndash;&gt;-->
 <!--                <br>-->
@@ -192,8 +215,8 @@
 
     <script>
         var idError = document.getElementById('id-error');
-        var fullnameError = document.getElementById('fullname-error');
-        var usernameError = document.getElementById('username-error');
+        var addressError = document.getElementById('address-error');
+        var firstnameError = document.getElementById('firstname-error');
         var lastnameError = document.getElementById('lastname-error');
         var emailError = document.getElementById('email-error');
         var phoneError = document.getElementById('phone-error');
@@ -201,6 +224,7 @@
         var couponError = document.getElementById('coupon-error');
         var submissionError = document.getElementById('submission-error');
         var dateError = document.getElementById('date-error');
+        var problemError = document.getElementById('problem-error');
         var formSubmit = document.getElementById('formSubmit');
 
 
@@ -223,19 +247,19 @@
         function validateFirstname() {
             var firstname = document.getElementById('firstname').value;
             if (firstname.length == 0) {
-                usernameError.innerHTML = "Name is required!"
+                firstname.innerHTML = "Name is required!"
                 return false;
             }
             if (!firstname.match(/^[a-zA-Z0-9]+$/)) {
-                usernameError.innerHTML = "Characters and spaces aren't allowed!"
+                firstnameError.innerHTML = "Characters and spaces aren't allowed!"
                 return false;
             }
-            usernameError.innerHTML = "<i class='fa fa-check-circle'></i>";
+            firstnameError.innerHTML = "<i class='fa fa-check-circle'></i>";
             return true;
         }
 
 
-        //User Name Validation
+        //Last Name Validation
         function validateLastname() {
             var lastname = document.getElementById('lastname').value;
             if (lastname.length == 0) {
@@ -250,18 +274,18 @@
             return true;
         }
 
-        //Full Name Validation 
-        function validateName() {
-            var fullname = document.getElementById('fullname').value;
-            if (fullname.length == 0) {
-                fullnameError.innerHTML = "Full name is required!"
+        //Address Validation 
+        function validateAddress() {
+            var address = document.getElementById('address').value;
+            if (address.length == 0) {
+                addressError.innerHTML = "Address is required!"
                 return false;
             }
-            if (!fullname.match(/^[a-zA-Z]+ [a-zA-Z]+$/)) {
-                fullnameError.innerHTML = "Write first and last name!"
+            if (!address.match(/^[a-zA-Z]+ [a-zA-Z]+$/)) {
+                addressError.innerHTML = "Write address in two words!"
                 return false;
             }
-            fullnameError.innerHTML = "<i class='fa fa-check-circle'></i>";
+            addressError.innerHTML = "<i class='fa fa-check-circle'></i>";
             return true;
         }
 
@@ -303,7 +327,7 @@
 
 
         //Date Name Validation
-        function validateFirstname() {
+        function validateDate() {
             var date = document.getElementById('date').value;
             if (date.length == 0) {
                 dateError.innerHTML = "Date is required!"
@@ -312,6 +336,19 @@
 
             usernameError.innerHTML = "<i class='fa fa-check-circle'></i>";
             return true;
+        }
+
+        // Problem Description Validation 
+        function validateProblem() {
+            var problem = document.getElementById('problem').value;
+
+            if (problem.length < 50 || problem.length > 150) {
+                problemError.innerHTML = "Please input the problem between 50 and 150 characters";
+                return false;
+            }
+            problemError.innerHTML = "<i class='fa fa-check-circle'></i>";
+            return true;
+
         }
 
         //Password Validation
