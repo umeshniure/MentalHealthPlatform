@@ -147,9 +147,9 @@
             </div>
 
             <div class="form-input">
-                <input placeholder="Problem Description" class="textarea" type="textarea" id="date" name="Problem" />
-
-                <!-- <span id="coupon-error"></span> -->
+                <input placeholder="Problem Description" class="textarea" type="textarea" id="problem" name="problem"
+                    onkeyup="validateProblem()" />
+                <span id="problem-error"></span>
                 <br>
             </div>
 
@@ -187,6 +187,7 @@
         var couponError = document.getElementById('coupon-error');
         var submissionError = document.getElementById('submission-error');
         var dateError = document.getElementById('date-error');
+        var problemError = document.getElementById('problem-error');
         var formSubmit = document.getElementById('formSubmit');
 
 
@@ -298,6 +299,19 @@
 
             usernameError.innerHTML = "<i class='fa fa-check-circle'></i>";
             return true;
+        }
+
+        // Problem Description Validation 
+        function validateProblem() {
+            var problem = document.getElementById('problem').value;
+
+            if (problem.length < 50 || problem.length > 150) {
+                problemError.innerHTML = "Please input the problem between 50 and 150 characters";
+                return false;
+            }
+            problemError.innerHTML = "<i class='fa fa-check-circle'></i>";
+            return true;
+
         }
 
         //Password Validation
