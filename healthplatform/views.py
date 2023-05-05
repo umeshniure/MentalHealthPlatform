@@ -19,8 +19,8 @@ def home(request):
 
 
 def register_doctor(request):
-    if request.method == 'POST':
-        page = 'register_doctor'
+
+    page = 'register_doctor'
     form = DoctorForm()
 
     if request.method == 'POST':
