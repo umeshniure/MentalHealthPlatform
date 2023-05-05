@@ -7,7 +7,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/registerPatient.css' %}">
+    <!-- <link rel="stylesheet" type="text/css" href="CSS/registerDoctor.css"> -->
+    <link rel="stylesheet" type="text/css" href="../../static/css/doctor/doctorRegistration.css">
+
 
 
     <title>Aarogya | Create Account</title>
@@ -29,15 +31,12 @@
 
 
     <div class="Container1">
-        <h1 class="Heading">Welcome to Aarogya!</h1>
+        <h1 class="Heading">Doctor, Welcome To Aarogya!</h1>
 
-        <form method="post" action="{% url 'register_patient' %}" class="form" id="form">
-            <!-- <div class="form-input">
-                <input type="number" id="id" name="id" placeholder="Your Id:" onkeyup="validateId()" />
-                <span id="id-error"></span>
-                <br>
-            </div> -->
+        <form method="post" action="" class="form" id="form">
+
             {% csrf_token %}
+
             <div class="form-input">
                 <input type="text" id="fullname" name="fullname" placeholder="Your Name:" onkeyup="validateName()" />
                 <span id="fullname-error"></span>
@@ -87,11 +86,23 @@
             </div>
 
             <div class="form-input">
-                <input placeholder="Problem Description" class="textarea" type="textarea" id="date" name="Problem" />
-
+                <input placeholder="Your Speciality" type="text" id="date" name="Problem" />
                 <!-- <span id="coupon-error"></span> -->
                 <br>
             </div>
+
+            <div class="form-input">
+                <input placeholder="Your Education" type="text" id="date" name="Problem" />
+                <!-- <span id="coupon-error"></span> -->
+                <br>
+            </div>
+
+            <div class="form-input">
+                <input type="number" id="id" name="id" placeholder="Your Licence Id:" onkeyup="validateId()" />
+                <span id="id-error"></span>
+                <br>
+            </div>
+
             <div class="form-input">
                 <div class="eye"><i class='fa fa-eye' onclick="passwordVisible()"></i></div>
                 <input type="password" id="password" name="password" placeholder="Your Password:"
@@ -121,7 +132,7 @@
             </div>
         </div> -->
 
-        <p class="createAccount">Already have an account? </p> <a href="{% url 'login' %}">
+        <p class="createAccount">Already have an account? </p> <a href="#ForgotPassword.html">
             <h5> Login Here</h5>
         </a>
         <div class="spacing"></div>

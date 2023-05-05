@@ -5,8 +5,10 @@ from django.http import HttpResponse
 from django.contrib.auth import login, logout, authenticate
 
 from healthplatform.forms import AppointmentForm
-from .models import CustomUser, Doctor, Patient, Review
+from .models import CustomUser, Doctor, Patient, Review, Appointment
 from django.contrib.auth.decorators import login_required
+
+from .forms import PatientForm, DoctorForm
 
 
 # Create your views here.
@@ -18,26 +20,23 @@ def home(request):
 
 def register_doctor(request):
     if request.method == 'POST':
-        email = request.POST['email']
-        phone = request.POST['phone']
-        password = request.POST['password']
-        first_name = request.POST['first_name']
-        last_name = request.POST['last_name']
-        specialty = request.POST['specialty']
-        dob = request.POST['dob']
-        address = request.POST['address']
-        user = CustomUser.objects.create_user(email=email, password=password, first_name=first_name,
-                                              last_name=last_name, dob=dob, phone=phone, address=address)
-        doctor = Doctor.objects.create(user=user, specialty=specialty)
+        page = 'register_doctor'
+    form = DoctorForm()
 
-        template = loader.get_template('index.html')
-        return HttpResponse(template.render())
-    else:
-        template = loader.get_template('register_doctor.html')
-        return HttpResponse(template.render())
+    if request.method == 'POST':
+        
+        form = DoctorForm(request.POST)
+
+        if form.is_valid():
+            form.save()
+            return redirect('login/')
+        
+    context = {'page' : page, 'form' : form}
+    return render(request, 'register_doctor.html', context)
 
 
 def register_patient(request):
+<<<<<<< HEAD
     if request.method == 'POST':
         email = request.POST['email']
         phone = request.POST['phone']
@@ -55,6 +54,22 @@ def register_patient(request):
     else:
         template = loader.get_template('patient/patientRegister.html')
         return HttpResponse(template.render())
+=======
+
+    page = 'register_patient'
+    form = PatientForm()
+
+    if request.method == 'POST':
+        
+        form = PatientForm(request.POST)
+
+        if form.is_valid():
+            form.save()
+            return redirect('login/')
+        
+    context = {'page' : page, 'form' : form}
+    return render(request, 'register_patient.html', context)
+>>>>>>> 296a69f9be9d63c12169a74421590e70ce9b34fa
 
 
 @login_required
@@ -73,7 +88,13 @@ def make_appointment(request, doctor_id):
         form = AppointmentForm()
         return render(request, 'make_appointment.html', {'doctor': doctor, 'form': form})
 
+@login_required
+def AppoinmentPage(request, user_id):
+    appoinment = None
+    appoinment = Appointment.objects.all()
+    return render(request, 'appointment.html', {'appointment': appoinment})
 
+@login_required
 def write_review(request, doctor_id):
     if request.method == 'POST':
         star = request.POST['star']

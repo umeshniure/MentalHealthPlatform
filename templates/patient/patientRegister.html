@@ -42,16 +42,27 @@
 
 
             <div class="form-input">
+<<<<<<< HEAD
                 <input type="text" id="username" name="firstname" placeholder="Your First Name:"
                     onkeyup="validateUsername()" />
+=======
+                <input type="text" id="firstname" name="firstname" placeholder="Your First Name:"
+                    onkeyup="validateFirstname()" />
+>>>>>>> 296a69f9be9d63c12169a74421590e70ce9b34fa
                 <span id="username-error"></span>
                 <br>
             </div>
 
             <div class="form-input">
+<<<<<<< HEAD
                 <input type="text" id="username" name="lastname" placeholder="Your last name:"
                     onkeyup="validateUsername()" />
                 <span id="username-error"></span>
+=======
+                <input type="text" id="lastname" name="lastname" placeholder="Your last name:"
+                    onkeyup="validateLastname()" />
+                <span id="lastname-error"></span>
+>>>>>>> 296a69f9be9d63c12169a74421590e70ce9b34fa
                 <br>
             </div>
 
@@ -89,9 +100,13 @@
 
             <div class="form-input">
                 <input placeholder="Date of Birth:" class="textbox-n" type="text" onfocus="(this.type='date')" id="date"
+<<<<<<< HEAD
                     name="dob" />
+=======
+                    name="date" onkeyup="validateNumber()" />
+>>>>>>> 296a69f9be9d63c12169a74421590e70ce9b34fa
 
-                <!-- <span id="coupon-error"></span> -->
+                <span id="date-error"></span>
                 <br>
             </div>
 
@@ -179,12 +194,15 @@
         var idError = document.getElementById('id-error');
         var fullnameError = document.getElementById('fullname-error');
         var usernameError = document.getElementById('username-error');
+        var lastnameError = document.getElementById('lastname-error');
         var emailError = document.getElementById('email-error');
         var phoneError = document.getElementById('phone-error');
         var passwordError = document.getElementById('password-error');
         var couponError = document.getElementById('coupon-error');
         var submissionError = document.getElementById('submission-error');
+        var dateError = document.getElementById('date-error');
         var formSubmit = document.getElementById('formSubmit');
+
 
         //ID Validation
         function validateId() {
@@ -200,7 +218,39 @@
             idError.innerHTML = "<i class='fa fa-check-circle'></i>";
         }
 
-        //Full Name Validation
+
+        //User Name Validation
+        function validateFirstname() {
+            var firstname = document.getElementById('firstname').value;
+            if (firstname.length == 0) {
+                usernameError.innerHTML = "Name is required!"
+                return false;
+            }
+            if (!firstname.match(/^[a-zA-Z0-9]+$/)) {
+                usernameError.innerHTML = "Characters and spaces aren't allowed!"
+                return false;
+            }
+            usernameError.innerHTML = "<i class='fa fa-check-circle'></i>";
+            return true;
+        }
+
+
+        //User Name Validation
+        function validateLastname() {
+            var lastname = document.getElementById('lastname').value;
+            if (lastname.length == 0) {
+                lastnameError.innerHTML = "Name is required!"
+                return false;
+            }
+            if (!lastname.match(/^[a-zA-Z0-9]+$/)) {
+                lastnameError.innerHTML = "Characters and spaces aren't allowed!"
+                return false;
+            }
+            lastnameError.innerHTML = "<i class='fa fa-check-circle'></i>";
+            return true;
+        }
+
+        //Full Name Validation 
         function validateName() {
             var fullname = document.getElementById('fullname').value;
             if (fullname.length == 0) {
@@ -214,38 +264,6 @@
             fullnameError.innerHTML = "<i class='fa fa-check-circle'></i>";
             return true;
         }
-
-        //User Name Validation
-        function validateFirstname() {
-            var username = document.getElementById('username').value;
-            if (username.length == 0) {
-                usernameError.innerHTML = "Name is required!"
-                return false;
-            }
-            if (!username.match(/^[a-zA-Z0-9]+$/)) {
-                usernameError.innerHTML = "Characters and spaces aren't allowed!"
-                return false;
-            }
-            usernameError.innerHTML = "<i class='fa fa-check-circle'></i>";
-            return true;
-        }
-
-
-        //User Name Validation
-        function validateLastname() {
-            var username = document.getElementById('username').value;
-            if (username.length == 0) {
-                usernameError.innerHTML = "Name is required!"
-                return false;
-            }
-            if (!username.match(/^[a-zA-Z0-9]+$/)) {
-                usernameError.innerHTML = "Characters and spaces aren't allowed!"
-                return false;
-            }
-            usernameError.innerHTML = "<i class='fa fa-check-circle'></i>";
-            return true;
-        }
-
 
         //Number Validation
         function validateNumber() {
@@ -283,6 +301,18 @@
             return true;
         }
 
+
+        //Date Name Validation
+        function validateFirstname() {
+            var date = document.getElementById('date').value;
+            if (date.length == 0) {
+                dateError.innerHTML = "Date is required!"
+                return false;
+            }
+
+            usernameError.innerHTML = "<i class='fa fa-check-circle'></i>";
+            return true;
+        }
 
         //Password Validation
         function validatePassword() {
