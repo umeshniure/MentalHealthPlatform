@@ -36,7 +36,6 @@ def register_doctor(request):
 
 
 def register_patient(request):
-<<<<<<< HEAD
     if request.method == 'POST':
         email = request.POST['email']
         phone = request.POST['phone']
@@ -54,7 +53,6 @@ def register_patient(request):
     else:
         template = loader.get_template('patient/patientRegister.html')
         return HttpResponse(template.render())
-=======
 
     page = 'register_patient'
     form = PatientForm()
@@ -69,7 +67,6 @@ def register_patient(request):
         
     context = {'page' : page, 'form' : form}
     return render(request, 'register_patient.html', context)
->>>>>>> 296a69f9be9d63c12169a74421590e70ce9b34fa
 
 
 @login_required
@@ -88,11 +85,13 @@ def make_appointment(request, doctor_id):
         form = AppointmentForm()
         return render(request, 'make_appointment.html', {'doctor': doctor, 'form': form})
 
+
 @login_required
 def AppoinmentPage(request, user_id):
     appoinment = None
     appoinment = Appointment.objects.all()
     return render(request, 'appointment.html', {'appointment': appoinment})
+
 
 @login_required
 def write_review(request, doctor_id):
