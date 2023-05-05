@@ -42,18 +42,18 @@ def register_patient(request):
         email = request.POST['email']
         phone = request.POST['phone']
         password = request.POST['password']
-        first_name = request.POST['first_name']
-        last_name = request.POST['last_name']
+        first_name = request.POST['firstname']
+        last_name = request.POST['lastname']
         dob = request.POST['dob']
         address = request.POST['address']
+        gender = request.POST['gender']
         user = CustomUser.objects.create_user(email=email, password=password, first_name=first_name,
                                               last_name=last_name, dob=dob, phone=phone, address=address)
         patient = Patient.objects.create(user=user)
-
         template = loader.get_template('index.html')
         return HttpResponse(template.render())
     else:
-        template = loader.get_template('register_patient.html')
+        template = loader.get_template('patient/patientRegister.html')
         return HttpResponse(template.render())
 
 
