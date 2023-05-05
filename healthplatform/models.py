@@ -74,7 +74,6 @@ class Doctor(models.Model):
 
 class Patient(models.Model):
     user_id = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
-    problem_statement = models.CharField(max_length=50)
     created_on = models.DateTimeField(auto_now_add=True)
 
     class Meta:

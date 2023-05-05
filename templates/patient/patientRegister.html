@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,7 +7,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="../../static/css/patient/patientRegister.css">
+    <link rel="stylesheet" type="text/css" href="{% static '/css/patient/patientRegister.css' %}">
 
 
     <title>Aarogya | Create Account</title>
@@ -31,6 +32,7 @@
         <h1 class="Heading">Welcome to Aarogya!</h1>
 
         <form method="post" action="" class="form" id="form">
+            {% csrf_token %}
             <!-- <div class="form-input">
                 <input type="number" id="id" name="id" placeholder="Your Id:" onkeyup="validateId()" />
                 <span id="id-error"></span>
@@ -40,21 +42,32 @@
 
 
             <div class="form-input">
+<<<<<<< HEAD
                 <input type="text" id="firstname" name="firstname" placeholder="Your First Name:"
                     onkeyup="validateFirstname()" />
+=======
+                <input type="text" id="username" name="firstname" placeholder="Your First Name:"
+                    onkeyup="validateUsername()" />
+>>>>>>> niure
                 <span id="username-error"></span>
                 <br>
             </div>
 
             <div class="form-input">
+<<<<<<< HEAD
                 <input type="text" id="lastname" name="lastname" placeholder="Your last name:"
                     onkeyup="validateLastname()" />
                 <span id="lastname-error"></span>
+=======
+                <input type="text" id="username" name="lastname" placeholder="Your last name:"
+                    onkeyup="validateUsername()" />
+                <span id="username-error"></span>
+>>>>>>> niure
                 <br>
             </div>
 
             <div class="form-input">
-                <input type="text" id="fullname" name="fullname" placeholder="Your Address:" onkeyup="validateName()" />
+                <input type="text" id="fullname" name="address" placeholder="Your Address:" onkeyup="validateName()" />
                 <span id="fullname-error"></span>
                 <br>
             </div>
@@ -66,7 +79,7 @@
             </div>
 
             <div class="form-input">
-                <input type="text" id="phoneNumber" name="phoneNumber" placeholder="Your Phone Number:"
+                <input type="text" id="phoneNumber" name="phone" placeholder="Your Phone Number:"
                     onkeyup="validateNumber()" />
                 <span id="phone-error"></span>
                 <br />
@@ -77,10 +90,9 @@
                 <div class="select">
                     <select name="format" id="format">
                         <option selected disabled>Choose your gender:</option>
-                        <option value="pdf">Male</option>
-                        <option value="txt">Female</option>
-                        <option value="epub">LGBTQ</option>
-                        <option value="fb2">Other</option>
+                        <option value="M">Male</option>
+                        <option value="F">Female</option>
+                        <option value="O">Other</option>
                     </select>
                 </div>
                 <br>
@@ -88,7 +100,11 @@
 
             <div class="form-input">
                 <input placeholder="Date of Birth:" class="textbox-n" type="text" onfocus="(this.type='date')" id="date"
+<<<<<<< HEAD
                     name="date" onkeyup="validateNumber()" />
+=======
+                    name="dob" />
+>>>>>>> niure
 
                 <span id="date-error"></span>
                 <br>
@@ -96,62 +112,61 @@
 
             <!--=============== CHOOSING PROBLEMS ===============-->
 
-            <p class="choice">Choose the problems that apply to you:</p>
-            <div class="form-input">
-                <input type="checkbox" class="nomargin" id="anxiety" name="anxiety" value="Anxiety Disorder">
-                <label class="checklabel" for="anxiety">Anxiety Disorder</label>
-                <br>
+<!--            <p class="choice">Choose the problems that apply to you:</p>-->
+<!--            <div class="form-input">-->
+<!--                <input type="checkbox" class="nomargin" id="anxiety" name="anxiety" value="Anxiety Disorder">-->
+<!--                <label class="checklabel" for="anxiety">Anxiety Disorder</label>-->
+<!--                <br>-->
 
-                <input type="checkbox" class="nomargin" id="adhd" name="adhd" value="adhd">
-                <label class="checklabel" for="adhd">ADHD</label>
-                <br>
+<!--                <input type="checkbox" class="nomargin" id="adhd" name="adhd" value="adhd">-->
+<!--                <label class="checklabel" for="adhd">ADHD</label>-->
+<!--                <br>-->
 
-                <input type="checkbox" class="nomargin" id="ocd" name="behavorial" value="behavorial">
-                <label class="checklabel" for="behavorial">Behavorial and Anxiety Disorder Among Children</label>
-                <br>
+<!--                <input type="checkbox" class="nomargin" id="ocd" name="behavorial" value="behavorial">-->
+<!--                <label class="checklabel" for="behavorial">Behavorial and Anxiety Disorder Among Children</label>-->
+<!--                <br>-->
 
-                <input type="checkbox" class="nomargin" id="bipolar" name="bipolar" value="bipolar">
-                <label class="checklabel" for="bipolar">Bipolar Effective Disorder</label>
-                <br>
+<!--                <input type="checkbox" class="nomargin" id="bipolar" name="bipolar" value="bipolar">-->
+<!--                <label class="checklabel" for="bipolar">Bipolar Effective Disorder</label>-->
+<!--                <br>-->
 
-                <input type="checkbox" class="nomargin" id="dissociation" name="dissociation"
-                    value="dissociation and dissociative disorder">
-                <label class="checklabel" for="dissociation">Dissociation and Dissociative Disorder</label>
-                <br>
+<!--                <input type="checkbox" class="nomargin" id="dissociation" name="dissociation"-->
+<!--                    value="dissociation and dissociative disorder">-->
+<!--                <label class="checklabel" for="dissociation">Dissociation and Dissociative Disorder</label>-->
+<!--                <br>-->
 
-                <input type="checkbox" class="nomargin" id="eating" name="eating" value="eating disorder">
-                <label class="checklabel" for="eating">Eating Disorder</label>
-                <br>
+<!--                <input type="checkbox" class="nomargin" id="eating" name="eating" value="eating disorder">-->
+<!--                <label class="checklabel" for="eating">Eating Disorder</label>-->
+<!--                <br>-->
 
-                <input type="checkbox" class="nomargin" id="ocd" name="ocd" value="ocd">
-                <label class="checklabel" for="ocd">Obsessive Compulsive Disorder OCD</label>
-                <br>
+<!--                <input type="checkbox" class="nomargin" id="ocd" name="ocd" value="ocd">-->
+<!--                <label class="checklabel" for="ocd">Obsessive Compulsive Disorder OCD</label>-->
+<!--                <br>-->
 
-                <input type="checkbox" class="nomargin" id="paranoia" name="paranoia" value="paranoia">
-                <label class="checklabel" for="paranoia">Paranoia </label>
-                <br>
+<!--                <input type="checkbox" class="nomargin" id="paranoia" name="paranoia" value="paranoia">-->
+<!--                <label class="checklabel" for="paranoia">Paranoia </label>-->
+<!--                <br>-->
 
-                <input type="checkbox" class="nomargin" id="schizophernia" name="schizophernia" value="schizophernia">
-                <label class="checklabel" for="schizophernia">Schizophernia </label>
-                <br>
+<!--                <input type="checkbox" class="nomargin" id="schizophernia" name="schizophernia" value="schizophernia">-->
+<!--                <label class="checklabel" for="schizophernia">Schizophernia </label>-->
+<!--                <br>-->
 
-                <input type="checkbox" class="nomargin" id="unknown" name="unknown" value="unknown">
-                <label class="checklabel" for="unknown">Unknown</label>
-                <br>
+<!--                <input type="checkbox" class="nomargin" id="unknown" name="unknown" value="unknown">-->
+<!--                <label class="checklabel" for="unknown">Unknown</label>-->
+<!--                <br>-->
 
-                <input type="checkbox" class="nomargin" id="other" name="other" value="other">
-                <label class="checklabel" for="other">Other</label>
-                <br>
+<!--                <input type="checkbox" class="nomargin" id="other" name="other" value="other">-->
+<!--                <label class="checklabel" for="other">Other</label>-->
+<!--                <br>-->
 
-            </div>
+<!--            </div>-->
 
-            <div class="form-input">
-                <input placeholder="Problem Description" class="textarea" type="textarea" id="date" name="Problem" />
+<!--            <div class="form-input">-->
+<!--                <input placeholder="Problem Description" class="textarea" type="textarea" id="date" name="Problem" />-->
 
-                <!-- <span id="coupon-error"></span> -->
-                <br>
-            </div>
-
+<!--                &lt;!&ndash; <span id="coupon-error"></span> &ndash;&gt;-->
+<!--                <br>-->
+<!--            </div>-->
 
 
             <div class="form-input">
@@ -169,7 +184,7 @@
             <span id="submission-error"></span> <br>
         </form>
 
-        <p class="createAccount">Already have an account? </p> <a href="#ForgotPassword.html">
+        <p class="createAccount">Already have an account? </p> <a href="{% url 'login' %}">
             <h5> Login Here</h5>
         </a>
         <div class="spacing"></div>
