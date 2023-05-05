@@ -161,12 +161,6 @@ def login(request):
         email = request.POST.get('email')
         password = request.POST.get('password')
 
-        try:
-            user = Doctor.objects.get(username=email)
-            print(user)
-        except:
-            messages.error(request, "Incorrect username or password combination")
-
         user = authenticate(request, email=email, password=password)
         print(email, password)
         if user is not None:

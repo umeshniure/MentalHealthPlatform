@@ -71,6 +71,9 @@ class Doctor(models.Model):
     class Meta:
         ordering = ['-created_on']
 
+    def __str__(self):
+        return f"{self.user_id}"
+
 
 class Patient(models.Model):
     user_id = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
@@ -78,6 +81,9 @@ class Patient(models.Model):
 
     class Meta:
         ordering = ['-created_on']
+
+    def __str__(self):
+        return f"{self.user_id}"
 
 
 class Schedule(models.Model):
