@@ -5,7 +5,7 @@ from django.http import HttpResponse
 from django.contrib.auth import login, logout, authenticate
 
 from healthplatform.forms import AppointmentForm
-from .models import CustomUser, Doctor, Patient, Review
+from .models import CustomUser, Doctor, Patient, Review, Appointment
 from django.contrib.auth.decorators import login_required
 
 
@@ -39,6 +39,15 @@ def register_doctor(request):
 
 def register_patient(request):
     if request.method == 'POST':
+        # if request.method == 'POST':
+        # review = Review.objects.create(
+        #     user = request.user,
+        #     product  = product,
+        #     star = request.POST.get('star'),
+        #     comment = request.POST.get('comment')
+        # )
+        # return redirect('product', pk = product.id)
+        
         email = request.POST['email']
         phone = request.POST['phone']
         password = request.POST['password']
@@ -50,7 +59,7 @@ def register_patient(request):
                                               last_name=last_name, dob=dob, phone=phone, address=address)
         patient = Patient.objects.create(user=user)
 
-        template = loader.get_template('index.html')
+        template = loader.get_template('.html')
         return HttpResponse(template.render())
     else:
         template = loader.get_template('register_patient.html')
@@ -73,7 +82,13 @@ def make_appointment(request, doctor_id):
         form = AppointmentForm()
         return render(request, 'make_appointment.html', {'doctor': doctor, 'form': form})
 
+@login_required
+def AppoinmentPage(request, user_id):
+    appoinment = None
+    appoinment = Appointment.objects.all()
+    return render(request, 'appointment.html', {'appointment': appoinment})
 
+@login_required
 def write_review(request, doctor_id):
     if request.method == 'POST':
         star = request.POST['star']

@@ -31,13 +31,13 @@
     <div class="Container1">
         <h1 class="Heading">Welcome to Aarogya!</h1>
 
-        <form method="post" action="" class="form" id="form">
+        <form method="post" action="{% url 'register_patient' %}" class="form" id="form">
             <!-- <div class="form-input">
                 <input type="number" id="id" name="id" placeholder="Your Id:" onkeyup="validateId()" />
                 <span id="id-error"></span>
                 <br>
             </div> -->
-
+            {% csrf_token %}
             <div class="form-input">
                 <input type="text" id="fullname" name="fullname" placeholder="Your Name:" onkeyup="validateName()" />
                 <span id="fullname-error"></span>
