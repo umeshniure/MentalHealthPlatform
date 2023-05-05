@@ -53,6 +53,13 @@
             background-color: #3284fc;
         }
 
+
+        .nomargin{
+            margin-left: 125px;
+            width: auto;
+            height: 18px;
+        }
+
         .Container1 {
             margin: 0px 50px;
             background-color: none;
