@@ -37,16 +37,25 @@
                 <br>
             </div> -->
 
+
+
             <div class="form-input">
-                <input type="text" id="fullname" name="fullname" placeholder="Your Name:" onkeyup="validateName()" />
-                <span id="fullname-error"></span>
+                <input type="text" id="username" name="username" placeholder="Your First Name:"
+                    onkeyup="validateUsername()" />
+                <span id="username-error"></span>
                 <br>
             </div>
 
             <div class="form-input">
-                <input type="text" id="username" name="username" placeholder="Your Address:"
+                <input type="text" id="username" name="username" placeholder="Your last name:"
                     onkeyup="validateUsername()" />
                 <span id="username-error"></span>
+                <br>
+            </div>
+
+            <div class="form-input">
+                <input type="text" id="fullname" name="fullname" placeholder="Your Address:" onkeyup="validateName()" />
+                <span id="fullname-error"></span>
                 <br>
             </div>
 
@@ -84,46 +93,54 @@
                 <!-- <span id="coupon-error"></span> -->
                 <br>
             </div>
-            <p>Choose the problems that apply to you:</p>
+
+            <!--=============== CHOOSING PROBLEMS ===============-->
+
+            <p class="choice">Choose the problems that apply to you:</p>
             <div class="form-input">
                 <input type="checkbox" class="nomargin" id="anxiety" name="anxiety" value="Anxiety Disorder">
-                <label for="anxiety">Anxiety Disorder</label>
+                <label class="checklabel" for="anxiety">Anxiety Disorder</label>
                 <br>
 
                 <input type="checkbox" class="nomargin" id="adhd" name="adhd" value="adhd">
-                <label for="anxiety">ADHD</label>
+                <label class="checklabel" for="adhd">ADHD</label>
                 <br>
 
-                <input type="checkbox" class="nomargin" id="ocd" name="vehicle3" value="Boat">
-                <label for="anxiety">Anxiety Disorder</label>
+                <input type="checkbox" class="nomargin" id="ocd" name="behavorial" value="behavorial">
+                <label class="checklabel" for="behavorial">Behavorial and Anxiety Disorder Among Children</label>
                 <br>
 
-                <input type="checkbox" class="nomargin" id="vehicle3" name="vehicle3" value="Boat">
-                <label for="anxiety">Anxiety Disorder</label>
+                <input type="checkbox" class="nomargin" id="bipolar" name="bipolar" value="bipolar">
+                <label class="checklabel" for="bipolar">Bipolar Effective Disorder</label>
                 <br>
 
-                <input type="checkbox" class="nomargin" id="unknown" name="vehicle3" value="Boat">
-                <label for="anxiety">Anxiety Disorder</label>
+                <input type="checkbox" class="nomargin" id="dissociation" name="dissociation"
+                    value="dissociation and dissociative disorder">
+                <label class="checklabel" for="dissociation">Dissociation and Dissociative Disorder</label>
                 <br>
 
-                <input type="checkbox" class="nomargin" id="unknown" name="vehicle3" value="Boat">
-                <label for="anxiety">Anxiety Disorder</label>
+                <input type="checkbox" class="nomargin" id="eating" name="eating" value="eating disorder">
+                <label class="checklabel" for="eating">Eating Disorder</label>
                 <br>
 
-                <input type="checkbox" class="nomargin" id="unknown" name="vehicle3" value="Boat">
-                <label for="anxiety">Anxiety Disorder</label>
+                <input type="checkbox" class="nomargin" id="ocd" name="ocd" value="ocd">
+                <label class="checklabel" for="ocd">Obsessive Compulsive Disorder OCD</label>
                 <br>
 
-                <input type="checkbox" class="nomargin" id="unknown" name="vehicle3" value="Boat">
-                <label for="anxiety">Anxiety Disorder</label>
+                <input type="checkbox" class="nomargin" id="paranoia" name="paranoia" value="paranoia">
+                <label class="checklabel" for="paranoia">Paranoia </label>
+                <br>
+
+                <input type="checkbox" class="nomargin" id="schizophernia" name="schizophernia" value="schizophernia">
+                <label class="checklabel" for="schizophernia">Schizophernia </label>
                 <br>
 
                 <input type="checkbox" class="nomargin" id="unknown" name="unknown" value="unknown">
-                <label for="unknown">Unknown</label>
+                <label class="checklabel" for="unknown">Unknown</label>
                 <br>
 
                 <input type="checkbox" class="nomargin" id="other" name="other" value="other">
-                <label for="other">Other</label>
+                <label class="checklabel" for="other">Other</label>
                 <br>
 
             </div>
@@ -151,20 +168,6 @@
             <button type="submit" class="mainButton" id="formSubmit" onclick="return validateForm()">continue</button>
             <span id="submission-error"></span> <br>
         </form>
-
-        <!-- <p class="Or">Or continue with</p>
-
-        <div class="loginIcons">
-            <div class="icon" id="icon1" style="background-image: url('ASSETS/loginPage/Frame\ 15.svg');">
-
-            </div>
-            <div class="icon" id="icon2" style="background-image: url('ASSETS/loginPage/Frame\ 16.svg');">
-
-            </div>
-            <div class="icon" id="icon3" style="background-image: url('ASSETS/loginPage/Frame\ 17.svg');">
-
-            </div>
-        </div> -->
 
         <p class="createAccount">Already have an account? </p> <a href="#ForgotPassword.html">
             <h5> Login Here</h5>
@@ -213,10 +216,10 @@
         }
 
         //User Name Validation
-        function validateUsername() {
+        function validateFirstname() {
             var username = document.getElementById('username').value;
             if (username.length == 0) {
-                usernameError.innerHTML = "Username is required!"
+                usernameError.innerHTML = "Name is required!"
                 return false;
             }
             if (!username.match(/^[a-zA-Z0-9]+$/)) {
@@ -226,6 +229,23 @@
             usernameError.innerHTML = "<i class='fa fa-check-circle'></i>";
             return true;
         }
+
+
+        //User Name Validation
+        function validateLastname() {
+            var username = document.getElementById('username').value;
+            if (username.length == 0) {
+                usernameError.innerHTML = "Name is required!"
+                return false;
+            }
+            if (!username.match(/^[a-zA-Z0-9]+$/)) {
+                usernameError.innerHTML = "Characters and spaces aren't allowed!"
+                return false;
+            }
+            usernameError.innerHTML = "<i class='fa fa-check-circle'></i>";
+            return true;
+        }
+
 
         //Number Validation
         function validateNumber() {
@@ -312,6 +332,10 @@
             }
         }
     </script>
+
+    <br>
+    <br>
+    <br>
 
 </body>
 
