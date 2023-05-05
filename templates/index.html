@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,15 +8,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!--=============== FAVICON ===============-->
-    <link rel="shortcut icon" href="assets/img/favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="{% static '/images/favicon.png' %}" type="image/x-icon">
 
     <!--=============== REMIX ICONS ===============-->
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
 
     <!--=============== CSS ===============-->
-    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" type="text/css" href="{% static '/css/styles.css' %}">
 
-    <title>Responsive plants website - Bedimcode</title>
+    <title>Arogya | Home page</title>
 </head>
 
 <body>
@@ -71,7 +73,7 @@
                         Create incredible plant design for your offices or apastaments.
                         Add fresness to your new ideas.
                     </p>
-                    <a href="#about" class="button button--flex">
+                    <a href="{% url 'login' %}" class="button button--flex">
                         Sign In <i class="ri-arrow-right-down-line button__icon"></i>
                     </a>
                 </div>
@@ -447,10 +449,10 @@
                 </h3>
 
                 <div class="footer__cards">
-                    <img src="assets/img/card1.png" alt="" class="footer__card">
-                    <img src="assets/img/card2.png" alt="" class="footer__card">
-                    <img src="assets/img/card3.png" alt="" class="footer__card">
-                    <img src="assets/img/card4.png" alt="" class="footer__card">
+                    <img src="{% static '/img/card1.png' %}" alt="" class="footer__card">
+                    <img src="{% static '/img/card2.png' %}" alt="" class="footer__card">
+                    <img src="{% static '/img/card3.png' %}" alt="" class="footer__card">
+                    <img src="{% static '/img/card4.png' %}" alt="" class="footer__card">
                 </div>
             </div>
         </div>
@@ -463,10 +465,10 @@
     </a>
 
     <!--=============== SCROLL REVEAL ===============-->
-    <script src="assets/js/scrollreveal.min.js"></script>
+    <script src="{% static '/js/scrollreveal.min.js' %}"></script>
 
     <!--=============== MAIN JS ===============-->
-    <script src="assets/js/main.js"></script>
+    <script src=" {% static '/js/main.js' %}"></script>
 </body>
 
 </html>

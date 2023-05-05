@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.template import loader
 from django.shortcuts import redirect, render
 from django.http import HttpResponse
@@ -108,25 +109,26 @@ def logoutUser(request):
 def login(request):
     page = 'login'
 
-    if request.user.is_authenticated:
-        return redirect('home')
+    # if request.user.is_authenticated:
+    #     return redirect('home')
 
     if request.method == 'POST':
-        username = request.POST.get('username').lower()
+        print("Hello!!")
+        email = request.POST.get('email')
         password = request.POST.get('password')
 
-        try:
-            user = CustomUser.objects.get(username=username)
-        except:
-            messages.error(request, "Incorrect username or password combination")
+        # try:
+        #     user = CustomUser.objects.get(email=email)
+        # except:
+        #     messages.error(request, "Incorrect username or password combination")
 
-        user = authenticate(request, username=username, password=password)
+        user = authenticate(request, email=email, password=password)
 
         if user is not None:
-            login(request, user)
             return redirect('home')
         else:
-            messages.error(request, "Incorrect username or password combination")
+            messages.error(request, "Incorrect email or password combination")
+            return redirect('login')
 
     context = {'page': page}
     return render(request, 'login.html', context)
