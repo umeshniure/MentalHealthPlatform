@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 from django.contrib import messages
 from django.template import loader
 from django.shortcuts import get_object_or_404, redirect, render
