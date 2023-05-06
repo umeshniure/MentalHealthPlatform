@@ -8,21 +8,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../../static/css/patient/patientRegister.css">
 
-
     <title>Aarogya | Create Account</title>
+
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
     </link>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-
 </head>
 
 <body>
     <div class="backgroundimage">
-
     </div>
+
     <script src="https://kit.fontawesome.com/b8a0a5c528.js" crossorigin="anonymous"></script>
     <div class="logo"></div>
 
@@ -31,62 +29,6 @@
         <h1 class="Heading">Welcome to Aarogya!</h1>
 
         <form method="post" action="" class="form" id="form">
-            <!-- <div class="form-input">
-                <input type="number" id="id" name="id" placeholder="Your Id:" onkeyup="validateId()" />
-                <span id="id-error"></span>
-                <br>
-            </div> -->
-
-
-            <div class="form-input">
-                <input type="text" id="fullname" name="fullname" placeholder="Your Full Name:"
-                    onkeyup="validateFullName()" />
-                <span id="address-error"></span>
-                <br>
-            </div>
-
-
-            <div class="form-input">
-                <input type="text" id="address" name="address" placeholder="Your Address:"
-                    onkeyup="validateAddress()" />
-                <span id="address-error"></span>
-                <br>
-            </div>
-
-            <div class="form-input">
-                <input type="email" id="email" name="email" placeholder="Your E-mail:" onkeyup="validateEmail()" />
-                <span id="email-error"></span>
-                <br>
-            </div>
-
-            <div class="form-input">
-                <input type="text" id="phoneNumber" name="phoneNumber" placeholder="Your Phone Number:"
-                    onkeyup="validateNumber()" />
-                <span id="phone-error"></span>
-                <br />
-            </div>
-
-
-            <div class="form-input">
-                <div class="select">
-                    <select name="format" id="format">
-                        <option selected disabled>Choose your gender:</option>
-                        <option value="pdf">Male</option>
-                        <option value="txt">Female</option>
-                        <option value="epub">LGBTQ</option>
-                        <option value="fb2">Other</option>
-                    </select>
-                </div>
-                <br>
-            </div>
-
-            <div class="form-input">
-                <input placeholder="Date of Birth:" class="textbox-n" type="text" onfocus="(this.type='date')" id="date"
-                    name="date" onkeyup="validateDate()" />
-
-                <span id="date-error"></span>
-                <br>
-            </div>
 
             <!--=============== CHOOSING PROBLEMS ===============-->
 
@@ -140,26 +82,13 @@
             </div>
 
             <div class="form-input">
-                <input placeholder="Problem Description" class="textarea" type="textarea" id="problem" name="problem"
-                    onkeyup="validateProblem()" />
-                <span id="problem-error"></span>
+                <input placeholder="Problem Description" class="textarea" type="textarea" id="problem" name="problem" />
                 <br>
             </div>
 
 
 
-            <div class="form-input">
-                <div class="eye"><i class='fa fa-eye' onclick="passwordVisible()"></i></div>
-                <input type="password" id="password" name="password" placeholder="Your Password:"
-                    onkeyup="validatePassword()" />
-                <!-- <img src="../ASSETS/Website/StarReview.svg"  onclick="passwordVisible()" alt=""> -->
-                <span id="password-error"></span>
-                <br>
-            </div>
-
-
-
-            <button type="submit" class="mainButton" id="formSubmit" onclick="return validateForm()">continue</button>
+            <button type="submit" class="mainButton" id="formSubmit" onclick="return validateForm()">submit</button>
             <span id="submission-error"></span> <br>
         </form>
 
@@ -168,211 +97,6 @@
         </a>
         <div class="spacing"></div>
     </div>
-
-    <script>
-        var idError = document.getElementById('id-error');
-        var addressError = document.getElementById('address-error');
-        var firstnameError = document.getElementById('firstname-error');
-        var lastnameError = document.getElementById('lastname-error');
-        var emailError = document.getElementById('email-error');
-        var phoneError = document.getElementById('phone-error');
-        var passwordError = document.getElementById('password-error');
-        var couponError = document.getElementById('coupon-error');
-        var submissionError = document.getElementById('submission-error');
-        var dateError = document.getElementById('date-error');
-        var problemError = document.getElementById('problem-error');
-        var formSubmit = document.getElementById('formSubmit');
-
-
-        //ID Validation
-        function validateId() {
-            var id = document.getElementById('id').value;
-            if (id.length == 0) {
-                idError.innerHTML = "Id is required!"
-                return false;
-            }
-            if (name.match(/^[0-9]$/)) {
-                idError.innerHTML = "Id must be a number!"
-                return false;
-            }
-            idError.innerHTML = "<i class='fa fa-check-circle'></i>";
-        }
-
-
-        //User Name Validation
-        function validateFirstname() {
-            var firstname = document.getElementById('firstname').value;
-            if (firstname.length == 0) {
-                firstname.innerHTML = "Name is required!"
-                return false;
-            }
-            if (!firstname.match(/^[a-zA-Z0-9]+$/)) {
-                firstnameError.innerHTML = "Characters and spaces aren't allowed!"
-                return false;
-            }
-            firstnameError.innerHTML = "<i class='fa fa-check-circle'></i>";
-            return true;
-        }
-
-
-        //Last Name Validation
-        function validateLastname() {
-            var lastname = document.getElementById('lastname').value;
-            if (lastname.length == 0) {
-                lastnameError.innerHTML = "Name is required!"
-                return false;
-            }
-            if (!lastname.match(/^[a-zA-Z0-9]+$/)) {
-                lastnameError.innerHTML = "Characters and spaces aren't allowed!"
-                return false;
-            }
-            lastnameError.innerHTML = "<i class='fa fa-check-circle'></i>";
-            return true;
-        }
-
-        //Address Fullname 
-        function validateFullName() {
-            var fullname = document.getElementById('fullname').value;
-            if (address.length == 0) {
-                fullnameError.innerHTML = "Full Name is required!"
-                return false;
-            }
-            if (!address.match(/^[a-zA-Z]+ [a-zA-Z]+$/)) {
-                addressError.innerHTML = "Write full name in at least two words!"
-                return false;
-            }
-            addressError.innerHTML = "<i class='fa fa-check-circle'></i>";
-            return true;
-        }
-
-
-        //Address Validation 
-        function validateAddress() {
-            var address = document.getElementById('address').value;
-            if (address.length == 0) {
-                addressError.innerHTML = "Address is required!"
-                return false;
-            }
-            if (!address.match(/^[a-zA-Z]+ [a-zA-Z]+$/)) {
-                addressError.innerHTML = "Write address in two words!"
-                return false;
-            }
-            addressError.innerHTML = "<i class='fa fa-check-circle'></i>";
-            return true;
-        }
-
-
-
-        //Number Validation
-        function validateNumber() {
-            var phone = document.getElementById('phoneNumber').value;
-
-            if (phone.length == 0) {
-                phoneError.innerHTML = "Number is required!"
-                return false;
-            }
-            if (phone.length !== 10) {
-                phoneError.innerHTML = "Number should be 10 digits!"
-                return false;
-            }
-            if (!phone.match(/^[0-9]{10}$/)) {
-                phoneError.innerHTML = "Enter digits only!"
-                return false;
-            }
-            phoneError.innerHTML = "<i class='fa fa-check-circle'></i>";
-            return true;
-        }
-
-
-        //Email Validation
-        function validateEmail() {
-            var email = document.getElementById('email').value;
-            if (email.length == 0) {
-                emailError.innerHTML = "Email is required!"
-                return false;
-            }
-            if (!email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)) {
-                emailError.innerHTML = "Email is invalid!"
-                return false;
-            }
-            emailError.innerHTML = "<i class='fa fa-check-circle'></i>";
-            return true;
-        }
-
-
-        //Date Name Validation
-        function validateDate() {
-            var date = document.getElementById('date').value;
-            if (date.length == 0) {
-                dateError.innerHTML = "Date is required!"
-                return false;
-            }
-
-            usernameError.innerHTML = "<i class='fa fa-check-circle'></i>";
-            return true;
-        }
-
-        // Problem Description Validation 
-        function validateProblem() {
-            var problem = document.getElementById('problem').value;
-
-            if (problem.length < 50 || problem.length > 150) {
-                problemError.innerHTML = "Please input the problem between 50 and 150 characters";
-                return false;
-            }
-            problemError.innerHTML = "<i class='fa fa-check-circle'></i>";
-            return true;
-
-        }
-
-        //Password Validation
-        function validatePassword() {
-            var password = document.getElementById('password').value;
-            if (password.length == 0) {
-                passwordError.innerHTML = "Password is required!"
-                return false;
-            }
-            if (password.length <= 8) {
-                passwordError.innerHTML = "8 characters required!"
-                return false;
-            }
-            if (!password.match(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#%&*]{8,}$/)) {
-                passwordError.innerHTML = "Password isn't strong!"
-                return false;
-            }
-            passwordError.innerHTML = "<i class='fa fa-check-circle'></i>";
-            return true;
-        }
-
-        //Form Validation
-        function validateForm() {
-            if (!validateId() || !validateFullname() || !validateUsername() || !validateEmail() || !validatePhone() || !validatePassword() || !validateCoupon()) {
-                submitError.style.display = "block";
-                submitError.innerHTML = 'Please fix your errors to submit!';
-                setTimeout(function () { submitError.style.display = 'none'; }, 3000);
-                return false;
-            }
-            else
-                return true;
-        }
-
-        //Prevent Default
-        formSubmit.addEventListener("click", function (e) {
-            if (!validateForm) {
-                e.preventDefault();
-            }
-        });
-
-        //Password Visibility
-        function passwordVisible() {
-            var x = document.getElementById("password");
-            if (x.type === "password") {
-                x.type = "text";
-            } else {
-                x.type = "password";
-            }
-        }
-    </script>
 
     <br>
     <br>

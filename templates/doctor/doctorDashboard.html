@@ -11,10 +11,15 @@
     <!--=============== REMIX ICONS ===============-->
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
 
+
+
     <!--=============== CSS ===============-->
     <link rel="stylesheet" href="../../static/css/patient/patientDashboard.css">
 
-    <title>Aarogya | Select Doctor</title>
+    <!--=============== CSS ===============-->
+    <link rel="stylesheet" href="../../static/css/patient/patientProfile.css">
+
+    <title>Responsive plants website - Bedimcode</title>
 </head>
 
 <body>
@@ -28,19 +33,19 @@
             <div class="nav__menu" id="nav-menu">
                 <ul class="nav__list">
                     <li class="nav__item">
-                        <a href="doctorProfile.html" class="nav__link active-link">Profile</a>
+                        <a href="selectDoctor.html" class="nav__link">Doctors</a>
                     </li>
                     <li class="nav__item">
-                        <a href="patientAppointments.html" class="nav__link">Appointments</a>
+                        <a href="#about" class="nav__link">Appointments</a>
                     </li>
                     <li class="nav__item">
-                        <a href="patientProfile.html" class="nav__link">Profile</a>
+                        <a href="#products" class="nav__link active-link">Profile</a>
                     </li>
                     <li class="nav__item">
-                        <a href="patientFAQs.html" class="nav__link">FAQs</a>
+                        <a href="#faqs" class="nav__link">FAQs</a>
                     </li>
                     <li class="nav__item">
-                        <a href="patientTuts.html" class="nav__link">Tutorials</a>
+                        <a href="#faqs" class="nav__link">Tutorials</a>
                     </li>
                 </ul>
 
@@ -60,39 +65,132 @@
         </nav>
     </header>
 
-    <main class="main">
-        <!--==================== HOME ====================-->
-        <section class="home" id="home">
-            <div class="home__container container grid">
-                <img src="../assets/img/home.png" alt="" class="home__img">
+    <main class="l-main">
+        <!--===== HOME =====-->
+        <section class="home bd-grid" id="home">
+            <div class="home__data">
+                <h1 class="home__title"> <span class="home__title-color">Sadhana Sapkota</span><br> from Kathmandu</h1>
+                <div class="header__social">
+                    <div class="header_child">
+                        <i class="ri-calendar-check-line"></i>
+                        <P style="display: inline; padding: 30px;">21 Years</P>
+                    </div>
+                    <br>
 
-                <div class="home__data">
-                    <h1 class="home__title">
-                        Ways to make <br> your life better
-                    </h1>
-                    <p class="home__description">
-                        Create incredible plant design for your offices or apastaments.
-                        Add fresness to your new ideas.
-                    </p>
-                    <a href="#about" class="button button--flex">
-                        Get Recommendation <i class="ri-arrow-right-down-line button__icon"></i>
-                    </a>
+                    <div class="header_child">
+                        <i class="ri-phone-line"></i>
+                        <P style="display: inline; padding: 30px;">9818280183</P>
+                    </div>
+                    <br>
+
+                    <div class="header_child">
+                        <i class="ri-mail-unread-line"></i>
+                        <P style="display: inline; padding: 30px;">mandeyra7@gmail.com</P>
+                    </div>
+                    <br>
+
+                    <div class="header_child">
+                        <i class="ri-genderless-line"></i>
+                        <P style="display: inline; padding: 30px;">Gender</P>
+                    </div>
+                    <br>
+                    <!-- 
+                    <div class="header_child">
+                        <i class="ri-mail-unread-line"></i>
+                        <P style="display: inline; padding: 30px;">mandeyra7@gmail.com</P>
+                    </div> -->
+
+
+                </div>
+                <a href="#" class="button">Edit Profile</a>
+            </div>
+
+            <div class="home__social">
+                <a href="" class="home__social-icon"><i class='bx bxl-linkedin'></i></a>
+                <a href="" class="home__social-icon"><i class='bx bxl-behance'></i></a>
+                <a href="" class="home__social-icon"><i class='bx bxl-github'></i></a>
+            </div>
+
+            <div class="home__img">
+                <svg class="home__blob" viewBox="0 0 479 467" xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <mask id="mask0" mask-type="alpha">
+                        <path
+                            d="M9.19024 145.964C34.0253 76.5814 114.865 54.7299 184.111 29.4823C245.804 6.98884 311.86 -14.9503 370.735 14.143C431.207 44.026 467.948 107.508 477.191 174.311C485.897 237.229 454.931 294.377 416.506 344.954C373.74 401.245 326.068 462.801 255.442 466.189C179.416 469.835 111.552 422.137 65.1576 361.805C17.4835 299.81 -17.1617 219.583 9.19024 145.964Z" />
+                    </mask>
+                    <g mask="url(#mask0)">
+                        <path
+                            d="M9.19024 145.964C34.0253 76.5814 114.865 54.7299 184.111 29.4823C245.804 6.98884 311.86 -14.9503 370.735 14.143C431.207 44.026 467.948 107.508 477.191 174.311C485.897 237.229 454.931 294.377 416.506 344.954C373.74 401.245 326.068 462.801 255.442 466.189C179.416 469.835 111.552 422.137 65.1576 361.805C17.4835 299.81 -17.1617 219.583 9.19024 145.964Z" />
+                        <image class="home__blob-img" x="50" y="60" href="assets/img/perfil.png" />
+                    </g>
+                </svg>
+            </div>
+        </section>
+
+        <!--===== ABOUT =====-->
+        <section class="about section " id="about">
+            <h2 class="section-title">Problems</h2>
+
+            <div class="about__container bd-grid">
+                <div class="about__img">
+                    <img src="assets/img/about.jpg" alt="">
                 </div>
 
-                <div class="home__social">
-                    <span class="home__social-follow">Follow Us</span>
+                <div>
+                    <h2 class="about__subtitle">Depression</h2>
+                    <p class="about__text">Depression (major depressive disorder) is a common and serious medical
+                        illness that negatively affects how you feel, the
+                        way you think and how you act. Fortunately, it is also treatable. Depression causes feelings of
+                        sadness and/or a loss of
+                        interest in activities you once enjoyed.</p>
+                </div>
 
-                    <div class="home__social-links">
-                        <a href="https://www.facebook.com/" target="_blank" class="home__social-link">
-                            <i class="ri-facebook-fill"></i>
-                        </a>
-                        <a href="https://www.instagram.com/" target="_blank" class="home__social-link">
-                            <i class="ri-instagram-line"></i>
-                        </a>
-                        <a href="https://twitter.com/" target="_blank" class="home__social-link">
-                            <i class="ri-twitter-fill"></i>
-                        </a>
+            </div>
+        </section>
+
+        <!--===== SKILLS =====-->
+        <section class="skills section" id="skills">
+            <h2 class="section-title">Issues</h2>
+
+            <div class="skills__container bd-grid">
+                <div>
+                    <h2 class="skills__subtitle">Selected Issues</h2>
+                    <div class="skills__data">
+                        <div class="skills__names">
+                            <i class='bx bxl-html5 skills__icon'></i>
+                            <span class="skills__name">HTML5</span>
+                        </div>
+
+
                     </div>
+                    <div class="skills__data">
+                        <div class="skills__names">
+                            <i class='bx bxl-css3 skills__icon'></i>
+                            <span class="skills__name">CSS3</span>
+                        </div>
+
+
+                    </div>
+                    <div class="skills__data">
+                        <div class="skills__names">
+                            <i class='bx bxl-javascript skills__icon'></i>
+                            <span class="skills__name">JAVASCRIPT</span>
+                        </div>
+
+
+                    </div>
+                    <div class="skills__data">
+                        <div class="skills__names">
+                            <i class='bx bxs-paint skills__icon'></i>
+                            <span class="skills__name">UX/UI</span>
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <div>
+                    <img src="assets/img/work3.jpg" alt="" class="skills__img">
                 </div>
             </div>
         </section>
@@ -189,6 +287,7 @@
 
     </main>
 
+
     <!--==================== FOOTER ====================-->
     <footer class="footer section">
         <div class="footer__container container grid">
@@ -196,10 +295,10 @@
                 <a href="#" class="footer__logo">
                     <i class="ri-leaf-line footer__logo-icon"></i> Aarogya
                 </a>
-
+                <!-- 
                 <h3 class="footer__title">
-                    Subscribe to our newsletter <br> to stay updated
-                </h3>
+                    Subscribe to our newsletter <br> to stay update
+                </h3> -->
 
                 <div class="footer__subscribe">
                     <input type="email" placeholder="Enter your email" class="footer__input">
