@@ -4,8 +4,12 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import MinMaxScaler, LabelEncoder
 from sklearn.neighbors import KNeighborsClassifier, NearestNeighbors
 
+from .views import export_appoinment_data, export_doctor_data
 
 def RecommendDoctor(problem=None):
+    export_doctor_data()
+    export_appoinment_data()
+    
     df_appointment = pd.read_csv('MentalHealthPlatform\healthplatform\data.csv')
     df_doctor = pd.read_csv('MentalHealthPlatform\healthplatform\Doctor_Data.csv')
 

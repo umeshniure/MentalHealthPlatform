@@ -772,7 +772,7 @@ the website, in dark theme
 
 .footer__subscribe{
   background-color: var(--first-color-lighten);
-  padding: .75rem;
+  padding: .5rem;
   display: flex;
   justify-content: space-between;
   border-radius: .5rem;
@@ -1023,7 +1023,7 @@ the website, in dark theme
   }
   .product__img{
     width: 234px;
-    height: 210px;
+    height: 160px;
     background-size: cover;
     /* border-radius: 9px 9px 0px 0px; */
   }
