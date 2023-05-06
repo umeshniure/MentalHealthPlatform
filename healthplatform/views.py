@@ -66,14 +66,6 @@ def register_patient(request):
         # temp_user = user.save()
 
         Patient.objects.create(user_id=user.id)
-
-        # form = PatientForm(None)
-        # patient = form.save(commit=False)
-        # patient.user_id = temp_user  # Set the user foreign key
-        # patient.save()  #
-
-        # patient = Patient.objects.create(user=user)
-        # template = loader.get_template('index.html')
         return redirect('home')
     else:
         return render(request, 'patientRegister.html', {'page': register_patient})
