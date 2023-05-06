@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from django.contrib import messages
 from django.template import loader
 from django.shortcuts import get_object_or_404, redirect, render
@@ -66,14 +67,6 @@ def register_patient(request):
         # temp_user = user.save()
 
         Patient.objects.create(user_id=user.id)
-
-        # form = PatientForm(None)
-        # patient = form.save(commit=False)
-        # patient.user_id = temp_user  # Set the user foreign key
-        # patient.save()  #
-
-        # patient = Patient.objects.create(user=user)
-        # template = loader.get_template('index.html')
         return redirect('home')
     else:
         return render(request, 'patientRegister.html', {'page': register_patient})
@@ -213,3 +206,21 @@ def login(request):
 
     context = {'page': page}
     return render(request, 'login.html', context)
+=======
+# from django.shortcuts import render
+
+# # Create your views here.
+# def test(request):
+#     '''
+#         Description:
+#             This is a function that is used to prevent csrf attack
+        
+#             params:
+#                 request: HttpRequest, required
+#                 id: int, optional
+            
+#             return:
+#                 None if id is not provided. HttpRequest is id is not None
+
+#     '''
+>>>>>>> 5843284280a3a39233be641abaaf14e82fd95975
