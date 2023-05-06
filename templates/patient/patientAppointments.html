@@ -11,128 +11,13 @@
     <!--=============== REMIX ICONS ===============-->
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
 
-    <!--=============== CSS ===============-->
+    <!--=============== CSS THEMATIC ===============-->
     <link rel="stylesheet" href="../../static/css/patient/patientDashboard.css">
 
-    <style>
-        main {
-            widows: 70%;
-            height: auto;
-            padding: 20px;
-            margin: 50px auto;
-            background: white;
-            font-family: 'Poppins', sans-serif;
-            color: #666;
-        }
+    <!--=============== CSS TABLES ===============-->
 
-        .table-header {
-            width: 90%;
-            height: 100px;
-            margin: auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+    <link rel="stylesheet" href="../../static/css/patient/patientTable.css">
 
-        .items-controller,
-        .search {
-            flex-shrink: 0;
-            display: flex;
-            align-content: center;
-            align-items: center;
-        }
-
-        select {
-            padding: 2px;
-            margin: 0 10px;
-            outline: none;
-            cursor: pointer;
-            border: none;
-            background: transparent;
-        }
-
-        .search>input {
-            padding: 8px;
-            border: none;
-            outline: navajowhite;
-            margin: 0 0 0 20px;
-            background: white;
-        }
-
-        .field {
-            width: 90%;
-            height: auto;
-            margin: auto;
-        }
-
-        table {
-            width: 100%;
-            margin: 2px auto;
-            table-layout: auto;
-            color: #757575;
-            background-color: #ffff;
-            border-collapse: collapse;
-            border-spacing: 0;
-            text-align: left;
-            border-radius: 12px;
-            /* background-color: red; */
-            overflow: hidden;
-        }
-
-        table tr th,
-        td {
-            padding: 10px;
-            border: 1px solid #ccc;
-        }
-
-
-        .bottom-field {
-            width: 100%;
-            padding: 20px;
-            margin-top: 20px;
-        }
-
-        .pagination {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .pagination li {
-            list-style: none;
-            padding: 2px;
-            margin: 10px;
-            flex-shrink: 0;
-            text-align: center;
-            border-radius: 5px;
-            border: 1px solid #999;
-            color: #999;
-        }
-
-        .pagination li.active {
-            background: #32d6aa;
-            color: white;
-            border-color: #32d6aa;
-
-        }
-
-        .pagination li a {
-            text-decoration: none;
-            padding: 3px 8px;
-            color: inherit;
-            display: block;
-            font-family: sans-serif;
-            font-size: 13px;
-        }
-
-        i.fa-edit {
-            color: lime;
-        }
-
-        i.fa-trash {
-            color: red;
-        }
-    </style>
 
     <title>Aarogya | Select Doctor</title>
 </head>
@@ -183,6 +68,583 @@
     <main>
 
         <h1>Existing Appointments</h1>
+        <section class="table-header">
+            <div class="items-controller">
+                <h5>Show</h5>
+                <select name="" id="itemperpage">
+                    <option value="04">04</option>
+                    <option value="05">05</option>
+                    <option value="08" selected>08</option>
+                    <option value="10">10</option>
+                    <option value="15">15</option>
+                </select>
+                <h5>Per Page</h5>
+            </div>
+            <div class="search">
+                <h5>Search</h5>
+                <input type="text" name="" id="search" placeholder="search">
+            </div>
+        </section>
+        <section class="field">
+            <table>
+                <thead>
+                    <tr>
+                        <th><input type="checkbox" name="" id="selectAll"></th>
+                        <th>Date</th>
+                        <th>Doctor's Name</th>
+                        <th>Price</th>
+                        <th>Status</th>
+                        <th>
+                            Action
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input type="checkbox"></td>
+                        <td>01</td>
+                        <td>Tiger Nixon</td>
+                        <td>Developer</td>
+                        <td>@tiger</td>
+                        <td>
+                            <section class="modal container">
+                                <button class="modal__button" id="open-modal">
+                                    Cancel
+                                </button>
+
+                                <div class="modal__container" id="modal-container">
+                                    <div class="modal__content">
+                                        <div class="modal__close close-modal" title="Close">
+                                            <i class='bx bx-x'></i>
+                                        </div>
+
+                                        <img src="assets/img/star-trophy.png" alt="" class="modal__img">
+
+                                        <h1 class="modal__title">Are you sure you want to Cancel?</h1>
+
+                                        <button class="modal__button modal__button-width">
+                                            Cancel
+                                        </button>
+
+                                        <button class="modal__button-link close-modal">
+                                            Cancel
+                                        </button>
+                                    </div>
+                                </div>
+                            </section>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox"></td>
+                        <td>02</td>
+                        <td>Garrett Winters</td>
+                        <td>Accountant</td>
+                        <td>@gakyo</td>
+                        <td>
+                            <section class="modal container">
+                                <button class="modal__button" id="open-modal">
+                                    Cancel
+                                </button>
+
+                                <div class="modal__container" id="modal-container">
+                                    <div class="modal__content">
+                                        <div class="modal__close close-modal" title="Close">
+                                            <i class='bx bx-x'></i>
+                                        </div>
+
+                                        <img src="assets/img/star-trophy.png" alt="" class="modal__img">
+
+                                        <h1 class="modal__title">Are you sure you want to Cancel?</h1>
+
+                                        <button class="modal__button modal__button-width">
+                                            Cancel
+                                        </button>
+
+                                        <button class="modal__button-link close-modal">
+                                            Cancel
+                                        </button>
+                                    </div>
+                                </div>
+                            </section>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox"></td>
+                        <td>03</td>
+                        <td>Ashton Cox</td>
+                        <td>Junior Technical Author</td>
+                        <td>@Francisco</td>
+                        <td>
+                            <section class="modal container">
+                                <button class="modal__button" id="open-modal">
+                                    Cancel
+                                </button>
+
+                                <div class="modal__container" id="modal-container">
+                                    <div class="modal__content">
+                                        <div class="modal__close close-modal" title="Close">
+                                            <i class='bx bx-x'></i>
+                                        </div>
+
+                                        <img src="assets/img/star-trophy.png" alt="" class="modal__img">
+
+                                        <h1 class="modal__title">Are you sure you want to Cancel?</h1>
+
+                                        <button class="modal__button modal__button-width">
+                                            Cancel
+                                        </button>
+
+                                        <button class="modal__button-link close-modal">
+                                            Cancel
+                                        </button>
+                                    </div>
+                                </div>
+                            </section>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox"></td>
+                        <td>04</td>
+                        <td>Cedric Kelly</td>
+                        <td>Senior Javascript Developer</td>
+                        <td>Edinburgh</td>
+                        <td>
+                            <section class="modal container">
+                                <button class="modal__button" id="open-modal">
+                                    Cancel
+                                </button>
+
+                                <div class="modal__container" id="modal-container">
+                                    <div class="modal__content">
+                                        <div class="modal__close close-modal" title="Close">
+                                            <i class='bx bx-x'></i>
+                                        </div>
+
+                                        <img src="assets/img/star-trophy.png" alt="" class="modal__img">
+
+                                        <h1 class="modal__title">Are you sure you want to Cancel?</h1>
+
+                                        <button class="modal__button modal__button-width">
+                                            Cancel
+                                        </button>
+
+                                        <button class="modal__button-link close-modal">
+                                            <section class="modal container">
+                                                <button class="modal__button" id="open-modal">
+                                                    Cancel
+                                                </button>
+
+                                                <div class="modal__container" id="modal-container">
+                                                    <div class="modal__content">
+                                                        <div class="modal__close close-modal" title="Close">
+                                                            <i class='bx bx-x'></i>
+                                                        </div>
+
+                                                        <img src="assets/img/star-trophy.png" alt="" class="modal__img">
+
+                                                        <h1 class="modal__title">Are you sure you want to Cancel?</h1>
+
+                                                        <button class="modal__button modal__button-width">
+                                                            Cancel
+                                                        </button>
+
+                                                        <button class="modal__button-link close-modal">
+                                                            Cancel
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </section>
+                                        </button>
+                                    </div>
+                                </div>
+                            </section>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox"></td>
+                        <td>05</td>
+                        <td>Airi Satou</td>
+                        <td>Accountant</td>
+                        <td>airxam</td>
+                        <td>
+                            <section class="modal container">
+                                <button class="modal__button" id="open-modal">
+                                    Cancel
+                                </button>
+
+                                <div class="modal__container" id="modal-container">
+                                    <div class="modal__content">
+                                        <div class="modal__close close-modal" title="Close">
+                                            <i class='bx bx-x'></i>
+                                        </div>
+
+                                        <img src="assets/img/star-trophy.png" alt="" class="modal__img">
+
+                                        <h1 class="modal__title">Are you sure you want to Cancel?</h1>
+
+                                        <button class="modal__button modal__button-width">
+                                            Cancel
+                                        </button>
+
+                                        <button class="modal__button-link close-modal">
+                                            Cancel
+                                        </button>
+                                    </div>
+                                </div>
+                            </section>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox"></td>
+                        <td>06</td>
+                        <td>Brielle Williamson</td>
+                        <td>Integration Specialist</td>
+                        <td>@Williamson</td>
+                        <td>
+                            <section class="modal container">
+                                <button class="modal__button" id="open-modal">
+                                    Cancel
+                                </button>
+
+                                <div class="modal__container" id="modal-container">
+                                    <div class="modal__content">
+                                        <div class="modal__close close-modal" title="Close">
+                                            <i class='bx bx-x'></i>
+                                        </div>
+
+                                        <img src="assets/img/star-trophy.png" alt="" class="modal__img">
+
+                                        <h1 class="modal__title">Are you sure you want to Cancel?</h1>
+
+                                        <button class="modal__button modal__button-width">
+                                            Cancel
+                                        </button>
+
+                                        <button class="modal__button-link close-modal">
+                                            Cancel
+                                        </button>
+                                    </div>
+                                </div>
+                            </section>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox"></td>
+                        <td>07</td>
+                        <td>Herrod Chandler</td>
+                        <td>Sales Assistant</td>
+                        <td>Francisco</td>
+                        <td>
+                            <section class="modal container">
+                                <button class="modal__button" id="open-modal">
+                                    Cancel
+                                </button>
+
+                                <div class="modal__container" id="modal-container">
+                                    <div class="modal__content">
+                                        <div class="modal__close close-modal" title="Close">
+                                            <i class='bx bx-x'></i>
+                                        </div>
+
+                                        <img src="assets/img/star-trophy.png" alt="" class="modal__img">
+
+                                        <h1 class="modal__title">Are you sure you want to Cancel?</h1>
+
+                                        <button class="modal__button modal__button-width">
+                                            Cancel
+                                        </button>
+
+                                        <button class="modal__button-link close-modal">
+                                            Cancel
+                                        </button>
+                                    </div>
+                                </div>
+                            </section>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox"></td>
+                        <td>08</td>
+                        <td>Rhona Davidson</td>
+                        <td>Integration Specialist</td>
+                        <td>Rohaxzam</td>
+                        <td>
+                            <section class="modal container">
+                                <button class="modal__button" id="open-modal">
+                                    Cancel
+                                </button>
+
+                                <div class="modal__container" id="modal-container">
+                                    <div class="modal__content">
+                                        <div class="modal__close close-modal" title="Close">
+                                            <i class='bx bx-x'></i>
+                                        </div>
+
+                                        <img src="assets/img/star-trophy.png" alt="" class="modal__img">
+
+                                        <h1 class="modal__title">Are you sure you want to Cancel?</h1>
+
+                                        <button class="modal__button modal__button-width">
+                                            Cancel
+                                        </button>
+
+                                        <button class="modal__button-link close-modal">
+                                            Cancel
+                                        </button>
+                                    </div>
+                                </div>
+                            </section>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox"></td>
+                        <td>09</td>
+                        <td>Colleen Hurst</td>
+                        <td>Javascript Developer</td>
+                        <td>@Francisco</td>
+                        <td>
+                            <section class="modal container">
+                                <button class="modal__button" id="open-modal">
+                                    Cancel
+                                </button>
+
+                                <div class="modal__container" id="modal-container">
+                                    <div class="modal__content">
+                                        <div class="modal__close close-modal" title="Close">
+                                            <i class='bx bx-x'></i>
+                                        </div>
+
+                                        <img src="assets/img/star-trophy.png" alt="" class="modal__img">
+
+                                        <h1 class="modal__title">Are you sure you want to Cancel?</h1>
+
+                                        <button class="modal__button modal__button-width">
+                                            Cancel
+                                        </button>
+
+                                        <button class="modal__button-link close-modal">
+                                            Cancel
+                                        </button>
+                                    </div>
+                                </div>
+                            </section>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox"></td>
+                        <td>10</td>
+                        <td>Sonya Frost</td>
+                        <td>Software Engineer</td>
+                        <td>Oedinburgh</td>
+                        <td>
+                            <section class="modal container">
+                                <button class="modal__button" id="open-modal">
+                                    Cancel
+                                </button>
+
+                                <div class="modal__container" id="modal-container">
+                                    <div class="modal__content">
+                                        <div class="modal__close close-modal" title="Close">
+                                            <i class='bx bx-x'></i>
+                                        </div>
+
+                                        <img src="assets/img/star-trophy.png" alt="" class="modal__img">
+
+                                        <h1 class="modal__title">Are you sure you want to Cancel?</h1>
+
+                                        <button class="modal__button modal__button-width">
+                                            Cancel
+                                        </button>
+
+                                        <button class="modal__button-link close-modal">
+                                            Cancel
+                                        </button>
+                                    </div>
+                                </div>
+                            </section>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox"></td>
+                        <td>11</td>
+                        <td>Jena Gaines</td>
+                        <td>Office Manager</td>
+                        <td>jana_max</td>
+                        <td>
+                            <section class="modal container">
+                                <button class="modal__button" id="open-modal">
+                                    Cancel
+                                </button>
+
+                                <div class="modal__container" id="modal-container">
+                                    <div class="modal__content">
+                                        <div class="modal__close close-modal" title="Close">
+                                            <i class='bx bx-x'></i>
+                                        </div>
+
+                                        <img src="assets/img/star-trophy.png" alt="" class="modal__img">
+
+                                        <h1 class="modal__title">Are you sure you want to Cancel?</h1>
+
+                                        <button class="modal__button modal__button-width">
+                                            Cancel
+                                        </button>
+
+                                        <button class="modal__button-link close-modal">
+                                            Cancel
+                                        </button>
+                                    </div>
+                                </div>
+                            </section>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox"></td>
+                        <td>12</td>
+                        <td>Quinn Flynn</td>
+                        <td>Support Lead</td>
+                        <td>Quinn_feri</td>
+                        <td>
+                            <section class="modal container">
+                                <button class="modal__button" id="open-modal">
+                                    Cancel
+                                </button>
+
+                                <div class="modal__container" id="modal-container">
+                                    <div class="modal__content">
+                                        <div class="modal__close close-modal" title="Close">
+                                            <i class='bx bx-x'></i>
+                                        </div>
+
+                                        <img src="assets/img/star-trophy.png" alt="" class="modal__img">
+
+                                        <h1 class="modal__title">Are you sure you want to Cancel?</h1>
+
+                                        <button class="modal__button modal__button-width">
+                                            Cancel
+                                        </button>
+
+                                        <button class="modal__button-link close-modal">
+                                            Cancel
+                                        </button>
+                                    </div>
+                                </div>
+                            </section>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox"></td>
+                        <td>13</td>
+                        <td>Charde Marshall</td>
+                        <td>Regional Director</td>
+                        <td>Charcisco</td>
+                        <td>
+                            <section class="modal container">
+                                <button class="modal__button" id="open-modal">
+                                    Cancel
+                                </button>
+
+                                <div class="modal__container" id="modal-container">
+                                    <div class="modal__content">
+                                        <div class="modal__close close-modal" title="Close">
+                                            <i class='bx bx-x'></i>
+                                        </div>
+
+                                        <img src="assets/img/star-trophy.png" alt="" class="modal__img">
+
+                                        <h1 class="modal__title">Are you sure you want to Cancel?</h1>
+
+                                        <button class="modal__button modal__button-width">
+                                            Cancel
+                                        </button>
+
+                                        <button class="modal__button-link close-modal">
+                                            Cancel
+                                        </button>
+                                    </div>
+                                </div>
+                            </section>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox"></td>
+                        <td>14</td>
+                        <td>Haley Kennedy</td>
+                        <td>Senior Marketing Designer</td>
+                        <td>haleywods</td>
+                        <td>
+                            <section class="modal container">
+                                <button class="modal__button" id="open-modal">
+                                    Cancel
+                                </button>
+
+                                <div class="modal__container" id="modal-container">
+                                    <div class="modal__content">
+                                        <div class="modal__close close-modal" title="Close">
+                                            <i class='bx bx-x'></i>
+                                        </div>
+
+                                        <img src="assets/img/star-trophy.png" alt="" class="modal__img">
+
+                                        <h1 class="modal__title">Are you sure you want to Cancel?</h1>
+
+                                        <button class="modal__button modal__button-width">
+                                            Cancel
+                                        </button>
+
+                                        <button class="modal__button-link close-modal">
+                                            Cancel
+                                        </button>
+                                    </div>
+                                </div>
+                            </section>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox"></td>
+                        <td>15</td>
+                        <td>Tatyana Fitzpatrick</td>
+                        <td>Regional Director</td>
+                        <td>tatyanay</td>
+                        <td>
+                            <section class="modal container">
+                                <button class="modal__button" id="open-modal">
+                                    Cancel
+                                </button>
+
+                                <div class="modal__container" id="modal-container">
+                                    <div class="modal__content">
+                                        <div class="modal__close close-modal" title="Close">
+                                            <i class='bx bx-x'></i>
+                                        </div>
+
+                                        <img src="assets/img/star-trophy.png" alt="" class="modal__img">
+
+                                        <h1 class="modal__title">Are you sure you want to Cancel?</h1>
+
+                                        <button class="modal__button modal__button-width">
+                                            Cancel
+                                        </button>
+
+                                        <button class="modal__button-link close-modal">
+                                            Cancel
+                                        </button>
+                                    </div>
+                                </div>
+                            </section>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="bottom-field">
+                <ul class="pagination">
+                    <li class="prev"><a href="#" id="prev">&#139;</a></li>
+                    <!-- page number here -->
+                    <li class="next"><a href="#" id="next">&#155;</a></li>
+                </ul>
+            </div>
+        </section>
+
         <h1>Past Appointments</h1>
         <section class="table-header">
             <div class="items-controller">
@@ -445,7 +907,10 @@
     <script src="../../static/js/scrollreveal.min.js"></script>
 
     <!--=============== MAIN JS ===============-->
-    <script src="../../static/js/scrollreveal.min.js"></script>
+    <script src="../../static/js/main.js"></script>
+
+    <!--=============== MODAL JS ===============-->
+    <script src="../../static/js/modal.js"></script>
 </body>
 
 </html>
