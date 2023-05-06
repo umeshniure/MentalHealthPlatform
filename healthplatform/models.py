@@ -40,7 +40,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(unique=True)
     address = models.CharField(max_length=100)
     phone = models.IntegerField(null=True)
-    dob = models.DateTimeField(null=True)
+    dob = models.DateField(null=True)
     gender = models.CharField(max_length=2, choices=GENDER, null=True)
     password = models.CharField(max_length=255)
     created_on = models.DateTimeField(auto_now_add=True)
@@ -71,6 +71,9 @@ class Doctor(models.Model):
     class Meta:
         ordering = ['-created_on']
 
+    def __str__(self):
+        return f"{self.user_id}"
+
 
 class Patient(models.Model):
     user_id = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
@@ -78,6 +81,9 @@ class Patient(models.Model):
 
     class Meta:
         ordering = ['-created_on']
+
+    def __str__(self):
+        return f"{self.user_id}"
 
 
 class Schedule(models.Model):
@@ -108,6 +114,16 @@ class Appointment(models.Model):
 
     class Meta:
         ordering = ['-created_on']
+
+class AppointmentRequest(models.Model):
+    appointment = models.ForeignKey(Appointment, on_delete=models.CASCADE)
+    doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE)
+    accepted = models.BooleanField(default=False)
+    created_date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.appointment} - {self.doctor}"
+    
 
 
 class Review(models.Model):

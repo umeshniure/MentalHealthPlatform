@@ -1,7 +1,13 @@
 from django.forms import ModelForm
 from .models import Doctor, Patient
 from .models import Appointment, Review
+from django import forms
+from django.contrib.auth.forms import AuthenticationForm
+from .models import CustomUser
 
+class CustomAuthenticationForm(AuthenticationForm):
+    class Meta:
+        model = CustomUser
 
 class AppointmentForm(ModelForm):
     class Meta:
