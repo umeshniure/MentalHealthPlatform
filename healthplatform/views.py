@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from django.contrib import messages
 from django.template import loader
 from django.shortcuts import redirect, render
@@ -152,3 +153,21 @@ def login(request):
 
     context = {'page': page}
     return render(request, 'login.html', context)
+=======
+# from django.shortcuts import render
+
+# # Create your views here.
+# def test(request):
+#     '''
+#         Description:
+#             This is a function that is used to prevent csrf attack
+        
+#             params:
+#                 request: HttpRequest, required
+#                 id: int, optional
+            
+#             return:
+#                 None if id is not provided. HttpRequest is id is not None
+
+#     '''
+>>>>>>> 5843284280a3a39233be641abaaf14e82fd95975
