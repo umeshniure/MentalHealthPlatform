@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 from django.contrib import messages
 from django.template import loader
 from django.shortcuts import get_object_or_404, redirect, render
@@ -223,4 +222,3 @@ def login(request):
 #                 None if id is not provided. HttpRequest is id is not None
 
 #     '''
->>>>>>> 5843284280a3a39233be641abaaf14e82fd95975
