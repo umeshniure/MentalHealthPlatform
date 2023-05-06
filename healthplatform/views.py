@@ -94,7 +94,7 @@ def appointment_requests(request):
         request_id = request.POST.get('request_id')
         accepted = request.POST.get('accepted') == 'True'
 
-        #if request is declined save reason why 
+        # if request is declined save reason why
         if accepted == 'False':
             reason = request.POST.get('reason')
 
@@ -104,6 +104,7 @@ def appointment_requests(request):
         request.save()
 
     return render(request, 'appointment_requests.html', {'requests': requests})
+
 
 # provides appoinments data according to the user
 @login_required(login_url="login")
@@ -116,34 +117,20 @@ def user_appointments(request):
     # both users appoinment can be shown on the same file(page)
     return render(request, 'user_appointments.html', {'appointments': appointments})
 
-# the user who made the appointment may delete the review as well
-@login_required(login_url="login")
-def deleteAppointment(request, pk):
-    appointment = Appointment.objects.get(id=pk)
-
-    if request.user != Appointment.user:
-        return HttpResponse('You are not wner of the appointment!')
-
-    if request.method == 'POST':
-        appoinment.delete()
-        return redirect('home')
-    context = {'obj': appointment}
-    return render(request, 'delete.html', context)
-
-
 # a way for user to provide review for the doctor
 @login_required(login_url="login")
 def write_review(request, doctor_id):
     if request.method == 'POST':
         star = request.POST['star']
         comment = request.POST['comment']
-        patient = request.user.patient 
+        patient = request.user.patient
         doctor = Doctor.objects.get(id=doctor_id)
         review = Review.objects.create(patient=patient, doctor=doctor, star=star, comment=comment)
         messages.success(request, 'Your review has been submitted!')
         return redirect('doctor_detail', doctor_id=doctor_id)
 
     return render(request, 'add_review.html', {'doctor_id': doctor_id})
+
 
 # the user who wrote the review may delete the review as well
 @login_required(login_url="login")
