@@ -44,7 +44,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     password = models.CharField(max_length=255)
     created_on = models.DateTimeField(auto_now_add=True)
     is_staff = models.BooleanField(default=False)
-    is_superuser= models.BooleanField(default=False)
+    is_superuser = models.BooleanField(default=False)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
@@ -52,7 +52,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     objects = CustomUserManager()
 
     def __str__(self):
-        return self.first_name + self.last_name
+        return self.first_name + " " + self.last_name
 
     class Meta:
         ordering = ['-created_on']
@@ -104,12 +104,15 @@ STATUS = (
 
 
 class Appointment(models.Model):
-    patient = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='patientid')
+    patient = models.ForeignKey(Patient, on_delete=models.CASCADE, related_name='patientid')
     doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE, related_name='doctorid')
-    schedule = models.ForeignKey(Schedule, on_delete=models.CASCADE, related_name='schedule')
+    # schedule = models.ForeignKey(Schedule, on_delete=models.CASCADE, related_name='schedule')
     status = models.CharField(max_length=2, choices=STATUS, default='P')
-    problem_statement = models.CharField(max_length=100)
+    problem_statement = models.CharField(max_length=100, null=True)
+    problem_description = models.CharField(max_length=100, null=True)
     created_on = models.DateTimeField(auto_now_add=True)
+    date = models.DateField(null=True)
+    time = models.TimeField(null=True)
 
     class Meta:
         ordering = ['-created_on']

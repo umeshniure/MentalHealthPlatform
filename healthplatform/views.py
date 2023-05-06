@@ -1,8 +1,8 @@
-<<<<<<< HEAD
 from django.contrib import messages
 from django.template import loader
 from django.shortcuts import get_object_or_404, redirect, render
 from django.http import HttpResponse
+from django.views.generic import ListView
 from django.contrib.auth import login, logout, authenticate
 
 from healthplatform.forms import AppointmentForm
@@ -21,21 +21,45 @@ def home(request):
     return HttpResponse(template.render())
 
 
+class PatientDashboard(ListView):
+    model = Doctor
+    queryset = Doctor.objects.select_related('user').order_by('-created_on')
+    template_name = 'patientDashboard.html'
+    paginate_by = 6
+
+    def get_context_data(self, **kwargs):
+        return {'doctors': Doctor.objects.select_related('user').order_by('-created_on')}
+
+
+def doctor_dashboard(request):
+    template = loader.get_template('doctor/doctorDashboard.html')
+    return HttpResponse(template.render())
+
+
 # for registering the doctor
 def register_doctor(request):
-    page = 'register_doctor'
-    form = DoctorForm()
-
     if request.method == 'POST':
+        email = request.POST['email']
+        phone = request.POST['phone']
+        password = request.POST['password']
+        first_name = request.POST['firstname']
+        last_name = request.POST['lastname']
+        dob = request.POST['dob']
+        address = request.POST['address']
+        gender = request.POST['gender']
 
-        form = DoctorForm(request.POST)
+        license = request.POST['license']
+        education = request.POST['education']
+        speciality = request.POST['speciality']
+        rate = request.POST['rate']
 
-        if form.is_valid():
-            form.save()
-            return redirect('login/')
+        user = CustomUser.objects.create_user(email=email, password=password, first_name=first_name,
+                                              last_name=last_name, dob=dob, phone=phone, address=address, gender=gender)
 
-    context = {'page': page, 'form': form}
-    return render(request, 'register_doctor.html', context)
+        Doctor.objects.create(user_id=user.id, license=license, education=education, speciality=speciality, rate=rate)
+        return redirect('home')
+
+    return render(request, 'doctor/doctorRegistration.html', {'page': register_doctor})
 
 
 # allows user to check detail on the appoinment, user ust be logged in to perform it
@@ -59,9 +83,6 @@ def register_patient(request):
         dob = request.POST['dob']
         address = request.POST['address']
         gender = request.POST['gender']
-        print("dob: ")
-        print(dob)
-        print(gender)
         user = CustomUser.objects.create_user(email=email, password=password, first_name=first_name,
                                               last_name=last_name, dob=dob, phone=phone, address=address, gender=gender)
         # temp_user = user.save()
@@ -71,42 +92,39 @@ def register_patient(request):
     else:
         return render(request, 'patientRegister.html', {'page': register_patient})
 
-    # page = 'register_patient'
-    # form = PatientForm()
-    #
-    # if request.method == 'POST':
-    #
-    #     form = PatientForm(request.POST)
-    #
-    #     if form.is_valid():
-    #         form.save()
-    #         return redirect('login/')
-    #
-    # context = {'page' : page, 'form' : form}
-    # return render(request, 'register_patient.html', context)
-
 
 # allows to make appoinment
 @login_required(login_url="login")
 def make_appointment(request, doctor_id):
+    page = "appointment"
     doctor = Doctor.objects.get(id=doctor_id)
-
+    print("Hello")
     # if form submitted matches the model and thus valid data is saved to database
     if request.method == 'POST':
-        form = AppointmentForm(request.POST)
-        if form.is_valid():
-            # Create a new Appointment object based on the form data
-            appointment = form.save(commit=False)
-            appointment.patient = request.user
-            appointment.doctor = doctor
-            appointment.save()
-            return redirect('home')
-        else:
-            return redirect('make_appoinment')
+        problem_statement = "Paranoia"
+        problem_description = request.POST['problem_description']
+        date = request.POST['date']
+        time = request.POST['time']
+        print("+++++++++++++++++++")
+        print(time)
+        print(date)
+        print(doctor.id)
+        print(request.user.id)
+        patient = Patient.objects.get(id=request.user.id)
+        # patient = Patient.objects.select_related(request.user.id)
+        print(patient.id)
+        Appointment.objects.create(patient=patient, doctor=doctor, status='P',
+                                   problem_statement=problem_statement, problem_description=problem_description,
+                                   date=date, time=time)
+
+        print("Successfullt appinted")
+        return redirect('view_user_appointment')
     else:
+        context = {'obj': page, 'doctor': doctor}
+        return render(request, 'patientBookAppointment.html', context)
         # if the user is asking for appointment form
-        form = AppointmentForm()
-        return render(request, 'make_appointment.html', {'doctor': doctor, 'form': form})
+        # form = AppointmentForm()
+        # return render(request, 'make_appointment.html', {'doctor': doctor, 'form': form})
 
 
 @login_required
@@ -192,13 +210,16 @@ def login(request):
     #     return redirect('home')
 
     if request.method == 'POST':
-        print("Hello!!")
         email = request.POST.get('email')
         password = request.POST.get('password')
 
         user = authenticate(request, email=email, password=password)
-        print(email, password)
+        print(user)
         if user is not None:
+            if hasattr(user, 'doctor'):  # Check if the user is a doctor
+                return redirect('doctor_dashboard')
+            elif hasattr(user, 'patient'):  # Check if the user is a patient
+                return redirect('patient_dashboard')
             return redirect('home')
         else:
             messages.error(request, "Incorrect email or password combination")
@@ -206,7 +227,7 @@ def login(request):
 
     context = {'page': page}
     return render(request, 'login.html', context)
-=======
+
 # from django.shortcuts import render
 
 # # Create your views here.
@@ -214,13 +235,12 @@ def login(request):
 #     '''
 #         Description:
 #             This is a function that is used to prevent csrf attack
-        
+
 #             params:
 #                 request: HttpRequest, required
 #                 id: int, optional
-            
+
 #             return:
 #                 None if id is not provided. HttpRequest is id is not None
 
 #     '''
->>>>>>> 5843284280a3a39233be641abaaf14e82fd95975

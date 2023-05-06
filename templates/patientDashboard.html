@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,13 +8,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!--=============== FAVICON ===============-->
-    <link rel="shortcut icon" href="../assets/img/favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="{% static '/img/favicon.png' %}" type="image/x-icon">
 
     <!--=============== REMIX ICONS ===============-->
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
 
     <!--=============== CSS ===============-->
-    <link rel="stylesheet" href="../../static/css/patient/patientDashboard.css">
+    <link rel="stylesheet" href="{% static '/css/patient/patientDashboard.css' %}">
 
     <title>Aarogya | Select Doctor</title>
 </head>
@@ -109,21 +111,22 @@
             </p>
 
             <div class="product__container grid">
+
+                {% for doctor in doctors %}
                 <article class="product__card">
                     <div class="product__circle"></div>
 
                     <img src="../assets/img/product1.png" alt="" class="product__img">
 
-                    <h3 class="product__title">Cacti Plant</h3>
-                    <span class="product__title">Stress Specialist</span>
-                    <span class="product__title">Psychologist</span>
-                    <span class="product__price">$19.99</span>
+                    <h3 class="product__title">{{ doctor.user.first_name }} {{ doctor.user.last_name }}</h3>
+                    <span class="product__title">{{ doctor.speciality }} | {{ doctor.education }}</span>
+                    <span class="product__price">NRS. {{ doctor.rate }}</span>
 
-                    <button class="button--flex product__button">
-
+                    <a href="{% url 'create_appointment' doctor_id=doctor.id  %}"><button class="button--flex product__button">
                         BOOK
-                    </button>
+                    </button></a>
                 </article>
+                {% endfor %}
 
                 <article class="product__card">
                     <div class="product__circle"></div>
