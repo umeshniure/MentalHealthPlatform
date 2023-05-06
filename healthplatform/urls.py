@@ -13,5 +13,6 @@ urlpatterns = [
     path('request_appointment', views.AppointmentForm, name='request_appointment'),
     path('view_appointment', views.user_appointments, name="view_appointment"),
     path('login/', LoginView.as_view(authentication_form=CustomAuthenticationForm), name='login'),
+    
 
 ]

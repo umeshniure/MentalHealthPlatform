@@ -40,7 +40,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(unique=True)
     address = models.CharField(max_length=100)
     phone = models.IntegerField(null=True)
-    dob = models.DateTimeField(null=True)
+    dob = models.DateField(null=True)
     gender = models.CharField(max_length=2, choices=GENDER, null=True)
     password = models.CharField(max_length=255)
     created_on = models.DateTimeField(auto_now_add=True)
