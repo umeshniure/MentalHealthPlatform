@@ -1,5 +1,14 @@
 /*=============== SHOW MENU ===============*/
 const navMenu = document.getElementById('nav-menu'),
+<<<<<<< HEAD
+      navToggle = document.getElementById('nav-toggle'),
+      navClose = document.getElementById('nav-close')
+
+/*===== MENU SHOW =====*/
+/* Validate if constant exists */
+if(navToggle){
+    navToggle.addEventListener('click', () =>{
+=======
     navToggle = document.getElementById('nav-toggle'),
     navClose = document.getElementById('nav-close')
 
@@ -7,14 +16,20 @@ const navMenu = document.getElementById('nav-menu'),
 /* Validate if constant exists */
 if (navToggle) {
     navToggle.addEventListener('click', () => {
+>>>>>>> 5843284280a3a39233be641abaaf14e82fd95975
         navMenu.classList.add('show-menu')
     })
 }
 
 /*===== MENU HIDDEN =====*/
 /* Validate if constant exists */
+<<<<<<< HEAD
+if(navClose){
+    navClose.addEventListener('click', () =>{
+=======
 if (navClose) {
     navClose.addEventListener('click', () => {
+>>>>>>> 5843284280a3a39233be641abaaf14e82fd95975
         navMenu.classList.remove('show-menu')
     })
 }
@@ -22,7 +37,11 @@ if (navClose) {
 /*=============== REMOVE MENU MOBILE ===============*/
 const navLink = document.querySelectorAll('.nav__link')
 
+<<<<<<< HEAD
+function linkAction(){
+=======
 function linkAction() {
+>>>>>>> 5843284280a3a39233be641abaaf14e82fd95975
     const navMenu = document.getElementById('nav-menu')
     // When we click on each nav__link, we remove the show-menu class
     navMenu.classList.remove('show-menu')
@@ -30,30 +49,57 @@ function linkAction() {
 navLink.forEach(n => n.addEventListener('click', linkAction))
 
 /*=============== CHANGE BACKGROUND HEADER ===============*/
+<<<<<<< HEAD
+function scrollHeader(){
+    const header = document.getElementById('header')
+    // When the scroll is greater than 80 viewport height, add the scroll-header class to the header tag
+    if(this.scrollY >= 80) header.classList.add('scroll-header'); else header.classList.remove('scroll-header')
+=======
 function scrollHeader() {
     const header = document.getElementById('header')
     // When the scroll is greater than 80 viewport height, add the scroll-header class to the header tag
     if (this.scrollY >= 80) header.classList.add('scroll-header'); else header.classList.remove('scroll-header')
+>>>>>>> 5843284280a3a39233be641abaaf14e82fd95975
 }
 window.addEventListener('scroll', scrollHeader)
 
 /*=============== QUESTIONS ACCORDION ===============*/
 const accordionItems = document.querySelectorAll('.questions__item')
 
+<<<<<<< HEAD
+accordionItems.forEach((item) =>{
+    const accordionHeader = item.querySelector('.questions__header')
+
+    accordionHeader.addEventListener('click', () =>{
+=======
 accordionItems.forEach((item) => {
     const accordionHeader = item.querySelector('.questions__header')
 
     accordionHeader.addEventListener('click', () => {
+>>>>>>> 5843284280a3a39233be641abaaf14e82fd95975
         const openItem = document.querySelector('.accordion-open')
 
         toggleItem(item)
 
+<<<<<<< HEAD
+        if(openItem && openItem!== item){
+=======
         if (openItem && openItem !== item) {
+>>>>>>> 5843284280a3a39233be641abaaf14e82fd95975
             toggleItem(openItem)
         }
     })
 })
 
+<<<<<<< HEAD
+const toggleItem = (item) =>{
+    const accordionContent = item.querySelector('.questions__content')
+
+    if(item.classList.contains('accordion-open')){
+        accordionContent.removeAttribute('style')
+        item.classList.remove('accordion-open')
+    }else{
+=======
 const toggleItem = (item) => {
     const accordionContent = item.querySelector('.questions__content')
 
@@ -61,6 +107,7 @@ const toggleItem = (item) => {
         accordionContent.removeAttribute('style')
         item.classList.remove('accordion-open')
     } else {
+>>>>>>> 5843284280a3a39233be641abaaf14e82fd95975
         accordionContent.style.height = accordionContent.scrollHeight + 'px'
         item.classList.add('accordion-open')
     }
@@ -70,6 +117,19 @@ const toggleItem = (item) => {
 /*=============== SCROLL SECTIONS ACTIVE LINK ===============*/
 const sections = document.querySelectorAll('section[id]')
 
+<<<<<<< HEAD
+function scrollActive(){
+    const scrollY = window.pageYOffset
+
+    sections.forEach(current =>{
+        const sectionHeight = current.offsetHeight,
+              sectionTop = current.offsetTop - 58,
+              sectionId = current.getAttribute('id')
+
+        if(scrollY > sectionTop && scrollY <= sectionTop + sectionHeight){
+            document.querySelector('.nav__menu a[href*=' + sectionId + ']').classList.add('active-link')
+        }else{
+=======
 function scrollActive() {
     const scrollY = window.pageYOffset
 
@@ -81,12 +141,24 @@ function scrollActive() {
         if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
             document.querySelector('.nav__menu a[href*=' + sectionId + ']').classList.add('active-link')
         } else {
+>>>>>>> 5843284280a3a39233be641abaaf14e82fd95975
             document.querySelector('.nav__menu a[href*=' + sectionId + ']').classList.remove('active-link')
         }
     })
 }
 window.addEventListener('scroll', scrollActive)
 
+<<<<<<< HEAD
+/*=============== SHOW SCROLL UP ===============*/ 
+function scrollUp(){
+    const scrollUp = document.getElementById('scroll-up');
+    // When the scroll is higher than 400 viewport height, add the show-scroll class to the a tag with the scroll-top class
+    if(this.scrollY >= 400) scrollUp.classList.add('show-scroll'); else scrollUp.classList.remove('show-scroll')
+}
+window.addEventListener('scroll', scrollUp)
+
+/*=============== DARK LIGHT THEME ===============*/ 
+=======
 /*=============== SHOW SCROLL UP ===============*/
 function scrollUp() {
     const scrollUp = document.getElementById('scroll-up');
@@ -96,6 +168,7 @@ function scrollUp() {
 window.addEventListener('scroll', scrollUp)
 
 /*=============== DARK LIGHT THEME ===============*/
+>>>>>>> 5843284280a3a39233be641abaaf14e82fd95975
 const themeButton = document.getElementById('theme-button')
 const darkTheme = 'dark-theme'
 const iconTheme = 'ri-sun-line'
@@ -110,9 +183,15 @@ const getCurrentIcon = () => themeButton.classList.contains(iconTheme) ? 'ri-moo
 
 // We validate if the user previously chose a topic
 if (selectedTheme) {
+<<<<<<< HEAD
+  // If the validation is fulfilled, we ask what the issue was to know if we activated or deactivated the dark
+  document.body.classList[selectedTheme === 'dark' ? 'add' : 'remove'](darkTheme)
+  themeButton.classList[selectedIcon === 'ri-moon-line' ? 'add' : 'remove'](iconTheme)
+=======
     // If the validation is fulfilled, we ask what the issue was to know if we activated or deactivated the dark
     document.body.classList[selectedTheme === 'dark' ? 'add' : 'remove'](darkTheme)
     themeButton.classList[selectedIcon === 'ri-moon-line' ? 'add' : 'remove'](iconTheme)
+>>>>>>> 5843284280a3a39233be641abaaf14e82fd95975
 }
 
 // Activate / deactivate the theme manually with the button
@@ -135,8 +214,16 @@ const sr = ScrollReveal({
 })
 
 sr.reveal(`.home__data`)
+<<<<<<< HEAD
+sr.reveal(`.home__img`, {delay: 500})
+sr.reveal(`.home__social`, {delay: 600})
+sr.reveal(`.about__img, .contact__box`,{origin: 'left'})
+sr.reveal(`.about__data, .contact__form`,{origin: 'right'})
+sr.reveal(`.steps__card, .product__card, .questions__group, .footer`,{interval: 100})
+=======
 sr.reveal(`.home__img`, { delay: 500 })
 sr.reveal(`.home__social`, { delay: 600 })
 sr.reveal(`.about__img, .contact__box`, { origin: 'left' })
 sr.reveal(`.about__data, .contact__form`, { origin: 'right' })
 sr.reveal(`.steps__card, .product__card, .questions__group, .footer`, { interval: 100 })
+>>>>>>> 5843284280a3a39233be641abaaf14e82fd95975

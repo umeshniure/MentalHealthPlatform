@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,7 +7,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="../../static/css/patient/patientRegister.css">
+    <!-- <link rel="stylesheet" type="text/css" href="CSS/registerDoctor.css"> -->
+    <link rel="stylesheet" type="text/css" href="../../static/css/doctor/doctorRegistration.css">
+
 
 
     <title>Aarogya | Create Account</title>
@@ -15,9 +18,7 @@
         rel="stylesheet">
     </link>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <style>
 
-    </style>
 
 </head>
 
@@ -25,41 +26,27 @@
     <div class="backgroundimage">
 
     </div>
-
     <script src="https://kit.fontawesome.com/b8a0a5c528.js" crossorigin="anonymous"></script>
     <div class="logo"></div>
 
 
     <div class="Container1">
-        <h1 class="Heading">Welcome to Aarogya!</h1>
+        <h1 class="Heading">Doctor, Welcome To Aarogya!</h1>
 
         <form method="post" action="" class="form" id="form">
-            <!-- <div class="form-input">
-                <input type="number" id="id" name="id" placeholder="Your Id:" onkeyup="validateId()" />
-                <span id="id-error"></span>
-                <br>
-            </div> -->
 
-
+            {% csrf_token %}
 
             <div class="form-input">
-                <input type="text" id="firstname" name="firstname" placeholder="Your First Name:"
-                    onkeyup="validateFirstname()" />
-                <span id="firstname-error"></span>
+                <input type="text" id="fullname" name="fullname" placeholder="Your Name:" onkeyup="validateName()" />
+                <span id="fullname-error"></span>
                 <br>
             </div>
 
             <div class="form-input">
-                <input type="text" id="lastname" name="lastname" placeholder="Your last name:"
-                    onkeyup="validateLastname()" />
-                <span id="lastname-error"></span>
-                <br>
-            </div>
-
-            <div class="form-input">
-                <input type="text" id="address" name="address" placeholder="Your Address:"
-                    onkeyup="validateAddress()" />
-                <span id="address-error"></span>
+                <input type="text" id="username" name="username" placeholder="Your Address:"
+                    onkeyup="validateUsername()" />
+                <span id="username-error"></span>
                 <br>
             </div>
 
@@ -92,14 +79,29 @@
 
             <div class="form-input">
                 <input placeholder="Date of Birth:" class="textbox-n" type="text" onfocus="(this.type='date')" id="date"
-                    name="date" onkeyup="validateDate()" />
+                    name="date" />
 
-                <span id="date-error"></span>
+                <!-- <span id="coupon-error"></span> -->
                 <br>
             </div>
 
+            <div class="form-input">
+                <input placeholder="Your Speciality" type="text" id="date" name="Problem" />
+                <!-- <span id="coupon-error"></span> -->
+                <br>
+            </div>
 
+            <div class="form-input">
+                <input placeholder="Your Education" type="text" id="date" name="Problem" />
+                <!-- <span id="coupon-error"></span> -->
+                <br>
+            </div>
 
+            <div class="form-input">
+                <input type="number" id="id" name="id" placeholder="Your Licence Id:" onkeyup="validateId()" />
+                <span id="id-error"></span>
+                <br>
+            </div>
 
             <div class="form-input">
                 <div class="eye"><i class='fa fa-eye' onclick="passwordVisible()"></i></div>
@@ -116,7 +118,21 @@
             <span id="submission-error"></span> <br>
         </form>
 
-        <p class="createAccount">Already have an account? </p> <a href="#ForgotPassword.html">
+        <!-- <p class="Or">Or continue with</p>
+
+        <div class="loginIcons">
+            <div class="icon" id="icon1" style="background-image: url('ASSETS/loginPage/Frame\ 15.svg');">
+
+            </div>
+            <div class="icon" id="icon2" style="background-image: url('ASSETS/loginPage/Frame\ 16.svg');">
+
+            </div>
+            <div class="icon" id="icon3" style="background-image: url('ASSETS/loginPage/Frame\ 17.svg');">
+
+            </div>
+        </div> -->
+
+        <p class="createAccount">Already have an account? </p> <a href="{% url 'login' %}">
             <h5> Login Here</h5>
         </a>
         <div class="spacing"></div>
@@ -124,18 +140,14 @@
 
     <script>
         var idError = document.getElementById('id-error');
-        var addressError = document.getElementById('address-error');
-        var firstnameError = document.getElementById('firstname-error');
-        var lastnameError = document.getElementById('lastname-error');
+        var fullnameError = document.getElementById('fullname-error');
+        var usernameError = document.getElementById('username-error');
         var emailError = document.getElementById('email-error');
         var phoneError = document.getElementById('phone-error');
         var passwordError = document.getElementById('password-error');
         var couponError = document.getElementById('coupon-error');
         var submissionError = document.getElementById('submission-error');
-        var dateError = document.getElementById('date-error');
-        var problemError = document.getElementById('problem-error');
         var formSubmit = document.getElementById('formSubmit');
-
 
         //ID Validation
         function validateId() {
@@ -151,50 +163,33 @@
             idError.innerHTML = "<i class='fa fa-check-circle'></i>";
         }
 
+        //Full Name Validation
+        function validateName() {
+            var fullname = document.getElementById('fullname').value;
+            if (fullname.length == 0) {
+                fullnameError.innerHTML = "Full name is required!"
+                return false;
+            }
+            if (!fullname.match(/^[a-zA-Z]+ [a-zA-Z]+$/)) {
+                fullnameError.innerHTML = "Write first and last name!"
+                return false;
+            }
+            fullnameError.innerHTML = "<i class='fa fa-check-circle'></i>";
+            return true;
+        }
 
         //User Name Validation
-        function validateFirstname() {
-            var firstname = document.getElementById('firstname').value;
-            if (firstname.length == 0) {
-                firstname.innerHTML = "Name is required!"
+        function validateUsername() {
+            var username = document.getElementById('username').value;
+            if (username.length == 0) {
+                usernameError.innerHTML = "Username is required!"
                 return false;
             }
-            if (!firstname.match(/^[a-zA-Z0-9]+$/)) {
-                firstnameError.innerHTML = "Characters and spaces aren't allowed!"
+            if (!username.match(/^[a-zA-Z0-9]+$/)) {
+                usernameError.innerHTML = "Characters and spaces aren't allowed!"
                 return false;
             }
-            firstnameError.innerHTML = "<i class='fa fa-check-circle'></i>";
-            return true;
-        }
-
-
-        //Last Name Validation
-        function validateLastname() {
-            var lastname = document.getElementById('lastname').value;
-            if (lastname.length == 0) {
-                lastnameError.innerHTML = "Name is required!"
-                return false;
-            }
-            if (!lastname.match(/^[a-zA-Z0-9]+$/)) {
-                lastnameError.innerHTML = "Characters and spaces aren't allowed!"
-                return false;
-            }
-            lastnameError.innerHTML = "<i class='fa fa-check-circle'></i>";
-            return true;
-        }
-
-        //Address Validation 
-        function validateAddress() {
-            var address = document.getElementById('address').value;
-            if (address.length == 0) {
-                addressError.innerHTML = "Address is required!"
-                return false;
-            }
-            if (!address.match(/^[a-zA-Z]+ [a-zA-Z]+$/)) {
-                addressError.innerHTML = "Write address in two words!"
-                return false;
-            }
-            addressError.innerHTML = "<i class='fa fa-check-circle'></i>";
+            usernameError.innerHTML = "<i class='fa fa-check-circle'></i>";
             return true;
         }
 
@@ -234,31 +229,6 @@
             return true;
         }
 
-
-        //Date Name Validation
-        function validateDate() {
-            var date = document.getElementById('date').value;
-            if (date.length == 0) {
-                dateError.innerHTML = "Date is required!"
-                return false;
-            }
-
-            usernameError.innerHTML = "<i class='fa fa-check-circle'></i>";
-            return true;
-        }
-
-        // Problem Description Validation 
-        function validateProblem() {
-            var problem = document.getElementById('problem').value;
-
-            if (problem.length < 50 || problem.length > 150) {
-                problemError.innerHTML = "Please input the problem between 50 and 150 characters";
-                return false;
-            }
-            problemError.innerHTML = "<i class='fa fa-check-circle'></i>";
-            return true;
-
-        }
 
         //Password Validation
         function validatePassword() {
@@ -308,10 +278,6 @@
             }
         }
     </script>
-
-    <br>
-    <br>
-    <br>
 
 </body>
 

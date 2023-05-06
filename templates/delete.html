@@ -1,0 +1,14 @@
+
+{% block content %}
+<!-- This delete method is like a pop up for all delets -->
+<form method="post" action="">
+    {%csrf_token%}
+    <!-- obj is passed as to what is being deleted -->
+    <p>Are you sure you want to delete {{obj}}?</p>
+<!-- request.META.HTTP_REFERER provides previus history -->
+    <a href="{{request.META.HTTP_REFERER}}">Go Back</a>
+    <input type="submit" value="Confirm" />
+
+</form>
+
+{% endblock content %}

@@ -17,7 +17,6 @@ def upload_location(instance, filename):
 
 
 # Create your models here.
-
 class CustomUserManager(BaseUserManager):
     def create_user(self, email, password=None, **extra_fields):
         if not email:
@@ -40,7 +39,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(unique=True)
     address = models.CharField(max_length=100)
     phone = models.IntegerField(null=True)
-    dob = models.DateTimeField(null=True)
+    dob = models.DateField(null=True)
     gender = models.CharField(max_length=2, choices=GENDER, null=True)
     password = models.CharField(max_length=255)
     created_on = models.DateTimeField(auto_now_add=True)
@@ -60,7 +59,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
 
 
 class Doctor(models.Model):
-    user_id = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
+    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
     license = models.IntegerField()
     education = models.CharField(max_length=50)
     speciality = models.CharField(max_length=50)
@@ -71,18 +70,23 @@ class Doctor(models.Model):
     class Meta:
         ordering = ['-created_on']
 
+    def __str__(self):
+        return f"{self.user_id}"
+
 
 class Patient(models.Model):
-    user_id = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
-    problem_statement = models.CharField(max_length=50)
+    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
     created_on = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         ordering = ['-created_on']
 
+    def __str__(self):
+        return f"{self.user_id}"
+
 
 class Schedule(models.Model):
-    user_id = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='schedule')
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='schedule')
     date = models.DateField()
     time = models.TimeField()
     created_on = models.DateTimeField(auto_now_add=True)
@@ -100,9 +104,9 @@ STATUS = (
 
 
 class Appointment(models.Model):
-    patient_id = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='patientid')
-    doctor_id = models.ForeignKey(Doctor, on_delete=models.CASCADE, related_name='doctorid')
-    schedule_id = models.ForeignKey(Schedule, on_delete=models.CASCADE, related_name='schedule')
+    patient = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='patientid')
+    doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE, related_name='doctorid')
+    schedule = models.ForeignKey(Schedule, on_delete=models.CASCADE, related_name='schedule')
     status = models.CharField(max_length=2, choices=STATUS, default='P')
     problem_statement = models.CharField(max_length=100)
     created_on = models.DateTimeField(auto_now_add=True)
@@ -111,9 +115,19 @@ class Appointment(models.Model):
         ordering = ['-created_on']
 
 
+class AppointmentRequest(models.Model):
+    appointment = models.ForeignKey(Appointment, on_delete=models.CASCADE)
+    doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE)
+    accepted = models.BooleanField(default=False)
+    created_date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.appointment} - {self.doctor}"
+
+
 class Review(models.Model):
     # user needs to be added
-    patient = models.ForeignKey(Patient, on_delete=models.CASCADE, null=True)
+    patient = models.ForeignKey(CustomUser, on_delete=models.CASCADE, null=True)
     doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE, null=True)
     star = models.IntegerField(default=0)
     comment = models.TextField(null=True, blank=True)
