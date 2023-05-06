@@ -20,6 +20,7 @@ def home(request):
     template = loader.get_template('index.html')
     return HttpResponse(template.render())
 
+<<<<<<< HEAD
 
 class PatientDashboard(ListView):
     model = Doctor
@@ -60,21 +61,42 @@ def register_doctor(request):
         return redirect('home')
 
     return render(request, 'doctor/doctorRegistration.html', {'page': register_doctor})
+=======
+# for registering the doctor
+def register_doctor(request):
 
+    page = 'register_doctor'
+    form = DoctorForm()
+
+    if request.method == 'POST':
+        
+        form = DoctorForm(request.POST)
+
+        if form.is_valid():
+            form.save()
+            return redirect('login/')
+        
+    context = {'page' : page, 'form' : form}
+    return render(request, 'register_doctor.html', context)
+>>>>>>> frontend
 
 # allows user to check detail on the appoinment, user ust be logged in to perform it
 @login_required(login_url="login")
 def appoinment(request, pk):
     appointment = None
-    appointment = Appointment.objects.get(id=pk)
-
-    context = {'appointment': appointment}
+    appointment = Appointment.objects.get(id = pk)
+    
+    context = {'appointment' : appointment}
     return render(request, 'appointment.html', context)
-
 
 # for registering as patient
 def register_patient(request):
+
+    page = 'register_patient'
+    form = PatientForm()
+
     if request.method == 'POST':
+<<<<<<< HEAD
         email = request.POST['email']
         phone = request.POST['phone']
         password = request.POST['password']
@@ -92,6 +114,17 @@ def register_patient(request):
     else:
         return render(request, 'patientRegister.html', {'page': register_patient})
 
+=======
+        
+        form = PatientForm(request.POST)
+
+        if form.is_valid():
+            form.save()
+            return redirect('login/')
+        
+    context = {'page' : page, 'form' : form}
+    return render(request, 'register_patient.html', context)
+>>>>>>> frontend
 
 # allows to make appoinment
 @login_required(login_url="login")
@@ -126,14 +159,6 @@ def make_appointment(request, doctor_id):
         # form = AppointmentForm()
         # return render(request, 'make_appointment.html', {'doctor': doctor, 'form': form})
 
-
-@login_required
-def AppoinmentPage(request, user_id):
-    appoinment = None
-    appoinment = Appointment.objects.all()
-    return render(request, 'appointment.html', {'appointment': appoinment})
-
-
 # doctor to accept or decline the appoinment request of the user
 @login_required(login_url="login")
 def appointment_requests(request):
@@ -166,7 +191,6 @@ def user_appointments(request):
 
     # both users appoinment can be shown on the same file(page)
     return render(request, 'user_appointments.html', {'appointments': appointments})
-
 
 # a way for user to provide review for the doctor
 @login_required(login_url="login")
@@ -227,7 +251,12 @@ def login(request):
 
     context = {'page': page}
     return render(request, 'login.html', context)
+<<<<<<< HEAD
 
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> frontend
 # from django.shortcuts import render
 
 # # Create your views here.
@@ -244,3 +273,8 @@ def login(request):
 #                 None if id is not provided. HttpRequest is id is not None
 
 #     '''
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 65cdf90caae4741003ba8397c0998806a61d533e
+>>>>>>> frontend
