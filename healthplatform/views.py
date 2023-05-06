@@ -19,35 +19,36 @@ def home(request):
     template = loader.get_template('index.html')
     return HttpResponse(template.render())
 
+
 # for registering the doctor
 def register_doctor(request):
-
     page = 'register_doctor'
     form = DoctorForm()
 
     if request.method == 'POST':
-        
+
         form = DoctorForm(request.POST)
 
         if form.is_valid():
             form.save()
             return redirect('login/')
-        
-    context = {'page' : page, 'form' : form}
+
+    context = {'page': page, 'form': form}
     return render(request, 'register_doctor.html', context)
+
 
 # allows user to check detail on the appoinment, user ust be logged in to perform it
 @login_required(login_url="login")
 def appoinment(request, pk):
     appointment = None
-    appointment = Appointment.objects.get(id = pk)
-    
-    context = {'appointment' : appointment}
+    appointment = Appointment.objects.get(id=pk)
+
+    context = {'appointment': appointment}
     return render(request, 'appointment.html', context)
+
 
 # for registering as patient
 def register_patient(request):
-<<<<<<< HEAD
     if request.method == 'POST':
         email = request.POST['email']
         phone = request.POST['phone']
@@ -57,30 +58,40 @@ def register_patient(request):
         dob = request.POST['dob']
         address = request.POST['address']
         gender = request.POST['gender']
+        print("dob: ")
+        print(dob)
+        print(gender)
         user = CustomUser.objects.create_user(email=email, password=password, first_name=first_name,
-                                              last_name=last_name, dob=dob, phone=phone, address=address)
-        patient = Patient.objects.create(user=user)
-        template = loader.get_template('index.html')
-        return HttpResponse(template.render())
+                                              last_name=last_name, dob=dob, phone=phone, address=address, gender=gender)
+        # temp_user = user.save()
+
+        Patient.objects.create(user_id=user.id)
+
+        # form = PatientForm(None)
+        # patient = form.save(commit=False)
+        # patient.user_id = temp_user  # Set the user foreign key
+        # patient.save()  #
+
+        # patient = Patient.objects.create(user=user)
+        # template = loader.get_template('index.html')
+        return redirect('home')
     else:
-        template = loader.get_template('patient/patientRegister.html')
-        return HttpResponse(template.render())
-=======
->>>>>>> 31d498805b60c895eb4b6ef8bf4db9d273ab8dd7
+        return render(request, 'patientRegister.html', {'page': register_patient})
 
-    page = 'register_patient'
-    form = PatientForm()
+    # page = 'register_patient'
+    # form = PatientForm()
+    #
+    # if request.method == 'POST':
+    #
+    #     form = PatientForm(request.POST)
+    #
+    #     if form.is_valid():
+    #         form.save()
+    #         return redirect('login/')
+    #
+    # context = {'page' : page, 'form' : form}
+    # return render(request, 'register_patient.html', context)
 
-    if request.method == 'POST':
-        
-        form = PatientForm(request.POST)
-
-        if form.is_valid():
-            form.save()
-            return redirect('login/')
-        
-    context = {'page' : page, 'form' : form}
-    return render(request, 'register_patient.html', context)
 
 # allows to make appoinment
 @login_required(login_url="login")
@@ -104,7 +115,6 @@ def make_appointment(request, doctor_id):
         form = AppointmentForm()
         return render(request, 'make_appointment.html', {'doctor': doctor, 'form': form})
 
-<<<<<<< HEAD
 
 @login_required
 def AppoinmentPage(request, user_id):
@@ -113,8 +123,6 @@ def AppoinmentPage(request, user_id):
     return render(request, 'appointment.html', {'appointment': appoinment})
 
 
-@login_required
-=======
 # doctor to accept or decline the appoinment request of the user
 @login_required(login_url="login")
 def appointment_requests(request):
@@ -125,7 +133,7 @@ def appointment_requests(request):
         request_id = request.POST.get('request_id')
         accepted = request.POST.get('accepted') == 'True'
 
-        #if request is declined save reason why 
+        # if request is declined save reason why
         if accepted == 'False':
             reason = request.POST.get('reason')
 
@@ -135,6 +143,7 @@ def appointment_requests(request):
         request.save()
 
     return render(request, 'appointment_requests.html', {'requests': requests})
+
 
 # provides appoinments data according to the user
 @login_required(login_url="login")
@@ -147,20 +156,21 @@ def user_appointments(request):
     # both users appoinment can be shown on the same file(page)
     return render(request, 'user_appointments.html', {'appointments': appointments})
 
+
 # a way for user to provide review for the doctor
 @login_required(login_url="login")
->>>>>>> 31d498805b60c895eb4b6ef8bf4db9d273ab8dd7
 def write_review(request, doctor_id):
     if request.method == 'POST':
         star = request.POST['star']
         comment = request.POST['comment']
-        patient = request.user.patient 
+        patient = request.user.patient
         doctor = Doctor.objects.get(id=doctor_id)
         review = Review.objects.create(patient=patient, doctor=doctor, star=star, comment=comment)
         messages.success(request, 'Your review has been submitted!')
         return redirect('doctor_detail', doctor_id=doctor_id)
 
     return render(request, 'add_review.html', {'doctor_id': doctor_id})
+
 
 # the user who wrote the review may delete the review as well
 @login_required(login_url="login")

@@ -31,74 +31,26 @@
     <div class="Container1">
         <h1 class="Heading">Welcome to Aarogya!</h1>
 
-        <form method="post" action="" class="form" id="form">
+        <form method="post" action="{% url 'register_patient' %}" class="form" id="form">
             {% csrf_token %}
-            <!-- <div class="form-input">
-                <input type="number" id="id" name="id" placeholder="Your Id:" onkeyup="validateId()" />
-                <span id="id-error"></span>
-                <br>
-            </div> -->
-
-
-
             <div class="form-input">
-<<<<<<< HEAD
-<<<<<<< HEAD
-                <input type="text" id="username" name="firstname" placeholder="Your First Name:"
-                    onkeyup="validateUsername()" />
-=======
                 <input type="text" id="firstname" name="firstname" placeholder="Your First Name:"
                     onkeyup="validateFirstname()" />
-<<<<<<< HEAD
->>>>>>> 296a69f9be9d63c12169a74421590e70ce9b34fa
-=======
-                <input type="text" id="firstname" name="firstname" placeholder="Your First Name:"
-                    onkeyup="validateFirstname()" />
-=======
-                <input type="text" id="username" name="firstname" placeholder="Your First Name:"
-                    onkeyup="validateUsername()" />
->>>>>>> niure
->>>>>>> 31d498805b60c895eb4b6ef8bf4db9d273ab8dd7
-                <span id="username-error"></span>
-=======
                 <span id="firstname-error"></span>
->>>>>>> frontend
                 <br>
             </div>
 
             <div class="form-input">
-<<<<<<< HEAD
-<<<<<<< HEAD
-                <input type="text" id="username" name="lastname" placeholder="Your last name:"
-                    onkeyup="validateUsername()" />
-                <span id="username-error"></span>
-=======
                 <input type="text" id="lastname" name="lastname" placeholder="Your last name:"
                     onkeyup="validateLastname()" />
-                <span id="lastname-error"></span>
->>>>>>> 296a69f9be9d63c12169a74421590e70ce9b34fa
-=======
-                <input type="text" id="lastname" name="lastname" placeholder="Your last name:"
-                    onkeyup="validateLastname()" />
-                <span id="lastname-error"></span>
-=======
-                <input type="text" id="username" name="lastname" placeholder="Your last name:"
-                    onkeyup="validateUsername()" />
                 <span id="username-error"></span>
->>>>>>> niure
->>>>>>> 31d498805b60c895eb4b6ef8bf4db9d273ab8dd7
                 <br>
             </div>
 
             <div class="form-input">
-<<<<<<< HEAD
-                <input type="text" id="fullname" name="address" placeholder="Your Address:" onkeyup="validateName()" />
-                <span id="fullname-error"></span>
-=======
                 <input type="text" id="address" name="address" placeholder="Your Address:"
                     onkeyup="validateAddress()" />
                 <span id="address-error"></span>
->>>>>>> frontend
                 <br>
             </div>
 
@@ -114,13 +66,10 @@
                 <span id="phone-error"></span>
                 <br />
             </div>
-
-
             <div class="form-input">
                 <div class="select">
-                    <select name="format" id="format">
-                        <option selected disabled>Choose your gender:</option>
-                        <option value="M">Male</option>
+                    <select name="gender" id="format">
+                        <option selected value="M">Male</option>
                         <option value="F">Female</option>
                         <option value="O">Other</option>
                     </select>
@@ -129,23 +78,7 @@
             </div>
 
             <div class="form-input">
-                <input placeholder="Date of Birth:" class="textbox-n" type="text" onfocus="(this.type='date')" id="date"
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-                    name="dob" />
-=======
-                    name="date" onkeyup="validateNumber()" />
->>>>>>> 296a69f9be9d63c12169a74421590e70ce9b34fa
-=======
-                    name="date" onkeyup="validateDate()" />
->>>>>>> frontend
-=======
-                    name="date" onkeyup="validateNumber()" />
-=======
-                    name="dob" />
->>>>>>> niure
->>>>>>> 31d498805b60c895eb4b6ef8bf4db9d273ab8dd7
+                <input placeholder="Date of Birth:" class="textbox-n" type="text" onfocus="(this.type='date')" id="date" name="dob" />
 
                 <span id="date-error"></span>
                 <br>
@@ -201,18 +134,14 @@
 <!--                <br>-->
 
 <!--            </div>-->
-
-<<<<<<< HEAD
 <!--            <div class="form-input">-->
 <!--                <input placeholder="Problem Description" class="textarea" type="textarea" id="date" name="Problem" />-->
-=======
-            <div class="form-input">
-                <input placeholder="Problem Description" class="textarea" type="textarea" id="problem" name="problem"
-                    onkeyup="validateProblem()" />
-                <span id="problem-error"></span>
-                <br>
-            </div>
->>>>>>> frontend
+<!--            <div class="form-input">-->
+<!--                <input placeholder="Problem Description" class="textarea" type="textarea" id="problem" name="problem"-->
+<!--                    onkeyup="validateProblem()" />-->
+<!--                <span id="problem-error"></span>-->
+<!--                <br>-->
+<!--            </div>-->
 
 <!--                &lt;!&ndash; <span id="coupon-error"></span> &ndash;&gt;-->
 <!--                <br>-->
@@ -227,9 +156,6 @@
                 <span id="password-error"></span>
                 <br>
             </div>
-
-
-
             <button type="submit" class="mainButton" id="formSubmit" onclick="return validateForm()">continue</button>
             <span id="submission-error"></span> <br>
         </form>
