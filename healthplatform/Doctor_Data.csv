@@ -1,0 +1,21 @@
+Doctor_id, Name, Speciality, Price, Location
+1, Dr. Alisha Shakya, Psychologist, 1000, Kathmandu
+2, Dr. Bibek Bhandari, Psychiatrist, 1500, Lalitpur
+3, Dr. Prabesh Dhakal, Clinical Psychologist, 1200, Bhaktapur
+4, Dr. Roshan Shrestha, Neuropsychologist, 2000, Kathmandu
+5, Dr. Sagar Thapa, Psychiatric Nurse Practitioner, 800, Lalitpur
+6, Dr. Anusha Sharma, Psychotherapist, 1000, Bhaktapur
+7, Dr. Dipesh Koirala, Addiction Psychiatrist, 1500, Kathmandu
+8, Dr. Neha Shrestha, Child Psychiatrist, 1200, Lalitpur
+9, Dr. Ramesh Singh, Forensic Psychiatrist, 2000, Bhaktapur
+10, Dr. Priya Sharma, Geriatric Psychiatrist, 800, Kathmandu
+11, Dr. Aryan Shrestha, Developmental Psychologist, 1000, Lalitpur
+12, Dr. Ritu Joshi, Sports Psychologist, 1500, Bhaktapur
+13, Dr. Gaurav Khadka, Social Psychologist, 1200, Kathmandu
+14, Dr. Shristi Shrestha, Health Psychologist, 2000, Lalitpur
+15, Dr. Sabin Adhikari, Educational Psychologist, 800, Bhaktapur
+16, Dr. Alina Thapa, Counseling Psychologist, 1000, Kathmandu
+17, Dr. Rajan Shrestha, Occupational Psychologist, 1500, Lalitpur
+18, Dr. Nisha Maharjan, Positive Psychologist, 1200, Bhaktapur
+19, Dr. Aayush Shrestha, Comparative Psychologist, 2000, Kathmandu
+20, Dr.  Anjali Chhetri, Evolutionary Psychologist, 800, Lalitpur
