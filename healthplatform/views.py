@@ -173,8 +173,7 @@ def login(request):
 
     context = {'page': page}
     return render(request, 'login.html', context)
-<<<<<<< HEAD
-=======
+
 # from django.shortcuts import render
 
 # # Create your views here.
@@ -191,5 +190,3 @@ def login(request):
 #                 None if id is not provided. HttpRequest is id is not None
 
 #     '''
-=======
->>>>>>> 65cdf90caae4741003ba8397c0998806a61d533e
