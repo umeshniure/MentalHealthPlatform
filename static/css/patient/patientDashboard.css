@@ -526,6 +526,9 @@ the website, in dark theme
   border-radius: 9px;
   transition: .3s;
 }
+img {
+  image-size: cover;
+}
 
 .product__title,
 .product__price{
@@ -780,7 +783,7 @@ the website, in dark theme
 
 .footer__input{
   width: 70%;
-  padding: 0 .5rem;
+  padding: 0 0.5rem;
   background: none;
   color: var(--text-color);
   border: none;
@@ -788,7 +791,7 @@ the website, in dark theme
 }
 
 .footer__button{
-  padding: 1rem;
+  padding: 0.5rem;
 }
 
 .footer__data{

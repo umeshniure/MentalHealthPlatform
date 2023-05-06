@@ -19,8 +19,14 @@ urlpatterns = [
     path('request_appointment', views.AppointmentForm, name='request_appointment'),
     path('view_appointment', views.user_appointments, name="view_appointment"),
     path('deleteReview/<str:pk>/', views.deleteReview, name = "deleteReview"),
+<<<<<<< HEAD
     path('deleteAppointment/<str:pk>/', views.deleteAppointment, name = "deleteAppointment"),
 >>>>>>> frontend
+=======
+    # path('deleteAppointment/<str:pk>/', views.deleteAppointment, name = "deleteAppointment"),
+    path('export_doctor_data/', views.export_doctor_data, name='export_doctor_data'),
+    path('export_appointment_data/', views.export_appoinment_data, name='export_appointment_data'),
+>>>>>>> f01d1198e39a9c5d604222125a414b565327a2cc
     path('login/', LoginView.as_view(authentication_form=CustomAuthenticationForm), name='login'),
 
 

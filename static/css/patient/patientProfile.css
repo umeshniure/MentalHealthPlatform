@@ -12,7 +12,7 @@
   --second-color: hsl(var(--hue-color), 56%, 12%);
   /*===== Fuente y tipografia =====*/
   --body-font: 'Poppins', sans-serif;
-  --big-font-size: 2rem;
+  --big-font-size: 1.5rem;
   --h2-font-size: 1.25rem;
   --normal-font-size: .938rem;
   --smaller-font-size: .75rem;
@@ -235,6 +235,7 @@ margin: 18px;
 }
 
 .skills__data {
+  color: rgb(51, 46, 46);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -243,7 +244,8 @@ margin: 18px;
   padding: .5rem 1rem;
   margin-bottom: var(--mb-4);
   border-radius: .5rem;
-  box-shadow: 0px 4px 25px rgba(14, 36, 49, 0.15);
+  border: 1px solid rgb(160, 195, 248);
+  box-shadow: 0px 4px 18px rgba(105, 105, 105, 0.15);
 }
 
 .skills__icon {
@@ -355,6 +357,8 @@ margin: 18px;
   .home__img {
     width: 300px;
     bottom: 25%;
+    display:hidden;
+    visibility: none;
   }
   .about__container {
     grid-template-columns: repeat(2, 1fr);
