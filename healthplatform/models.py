@@ -129,6 +129,7 @@ class Review(models.Model):
     # user needs to be added
     patient = models.ForeignKey(CustomUser, on_delete=models.CASCADE, null=True)
     doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE, null=True)
+    appointment = models.ForeignKey(Appointment, on_delete=models.CASCADE, null=True)
     star = models.IntegerField(default=0)
     comment = models.TextField(null=True, blank=True)
     createdDate = models.DateTimeField(auto_now_add=True)

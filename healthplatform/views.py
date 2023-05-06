@@ -10,6 +10,8 @@ from django.contrib.auth.decorators import login_required
 
 from .forms import PatientForm, DoctorForm
 
+import csv
+
 
 # Create your views here.
 
@@ -130,6 +132,38 @@ def write_review(request, doctor_id):
         return redirect('doctor_detail', doctor_id=doctor_id)
 
     return render(request, 'add_review.html', {'doctor_id': doctor_id})
+
+
+def export_doctor_data(request):
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename="MentalHealthPlatform\healthplatform\Doctor_Data.csv"'
+
+    # Query the database for the doctor data
+    doctors = Doctor.objects.all()
+
+    # Write the doctor data to the CSV file
+    writer = csv.writer(response)
+    writer.writerow(["Doctor_id", "Name", "Speciality", "Price", "Location"])
+    for doctor in doctors:
+        writer.writerow([doctor.id, doctor.user.name, doctor.speciality, doctor.price, doctor.user.address])
+
+    return response
+
+def export_appoinment_data(request):
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename="MentalHealthPlatform\healthplatform\data.csv"'
+
+    # Query the database for the reviews data
+    reviews = Review.objects.all()
+
+    # Write the doctor data to the CSV file
+    writer = csv.writer(response)
+    writer.writerow(["Doctor_id", "Patient ID", "Problem" ,"Appointment Rating"])
+    for review in reviews:
+        writer.writerow([review.appointment.doctor.id, review.appointment.patient.id, review.appointment.problem_statement, review.star])
+
+    return response
+
 
 
 # the user who wrote the review may delete the review as well

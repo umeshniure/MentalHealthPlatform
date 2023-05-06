@@ -14,6 +14,8 @@ urlpatterns = [
     path('view_appointment', views.user_appointments, name="view_appointment"),
     path('deleteReview/<str:pk>/', views.deleteReview, name = "deleteReview"),
     path('deleteAppointment/<str:pk>/', views.deleteAppointment, name = "deleteAppointment"),
+    path('export_doctor_data/', views.export_doctor_data, name='export_doctor_data'),
+    path('export_appointment_data/', views.export_appointment_data, name='export_appointment_data'),
     path('login/', LoginView.as_view(authentication_form=CustomAuthenticationForm), name='login'),
 
 
