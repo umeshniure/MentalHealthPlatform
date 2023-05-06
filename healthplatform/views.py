@@ -116,6 +116,21 @@ def user_appointments(request):
     # both users appoinment can be shown on the same file(page)
     return render(request, 'user_appointments.html', {'appointments': appointments})
 
+# the user who made the appointment may delete the review as well
+@login_required(login_url="login")
+def deleteAppointment(request, pk):
+    appointment = Appointment.objects.get(id=pk)
+
+    if request.user != Appointment.user:
+        return HttpResponse('You are not wner of the appointment!')
+
+    if request.method == 'POST':
+        appoinment.delete()
+        return redirect('home')
+    context = {'obj': appointment}
+    return render(request, 'delete.html', context)
+
+
 # a way for user to provide review for the doctor
 @login_required(login_url="login")
 def write_review(request, doctor_id):
