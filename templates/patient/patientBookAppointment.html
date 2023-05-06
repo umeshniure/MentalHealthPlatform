@@ -29,7 +29,6 @@
         <h1 class="Heading">Welcome to Aarogya!</h1>
 
         <form method="post" action="" class="form" id="form">
-
             <!--=============== CHOOSING PROBLEMS ===============-->
 
             <p class="choice">Choose the problems that apply to you:</p>
@@ -82,9 +81,23 @@
             </div>
 
             <div class="form-input">
-                <input placeholder="Problem Description" class="textarea" type="textarea" id="problem" name="problem" />
+                <input placeholder="Problem Description" type="text" id="problem" name="problem" />
                 <br>
             </div>
+
+            <div class="form-input">
+                <input type="text" placeholder="Enter preferred Time" onfocus="(this.type='time')" step="600"
+                    min="07:00" max="23:00" />
+                <br>
+            </div>
+
+            <div class="form-input">
+                <input type="text" placeholder="Enter preferred Date" onfocus="(this.type='date')" id="date" name="date"
+                    min="2023-05-07" max="2023-12-31">
+                <br>
+            </div>
+
+
 
 
 
@@ -97,6 +110,8 @@
         </a>
         <div class="spacing"></div>
     </div>
+
+
 
     <br>
     <br>
