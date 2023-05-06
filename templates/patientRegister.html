@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,9 +7,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="stylesheet" type="text/css" href="CSS/registerDoctor.css"> -->
-    <link rel="stylesheet" type="text/css" href="../../static/css/doctor/doctorRegistration.css">
-
+    <link rel="stylesheet" type="text/css" href="{% static '/css/patient/patientRegister.css' %}">
 
 
     <title>Aarogya | Create Account</title>
@@ -30,11 +29,10 @@
 
 
     <div class="Container1">
-        <h1 class="Heading">Doctor, Welcome To Aarogya!</h1>
+        <h1 class="Heading">Welcome to Aarogya!</h1>
 
-        <form method="post" action="" class="form" id="form">
-
-
+        <form method="post" action="{% url 'register_patient' %}" class="form" id="form">
+            {% csrf_token %}
             <div class="form-input">
                 <input type="text" id="firstname" name="firstname" placeholder="Your First Name:"
                     onkeyup="validateFirstname()" />
@@ -45,14 +43,14 @@
             <div class="form-input">
                 <input type="text" id="lastname" name="lastname" placeholder="Your last name:"
                     onkeyup="validateLastname()" />
-                <span id="lastname-error"></span>
+                <span id="username-error"></span>
                 <br>
             </div>
 
             <div class="form-input">
-                <input type="text" id="username" name="username" placeholder="Your Address:"
-                    onkeyup="validateUsername()" />
-                <span id="username-error"></span>
+                <input type="text" id="address" name="address" placeholder="Your Address:"
+                    onkeyup="validateAddress()" />
+                <span id="address-error"></span>
                 <br>
             </div>
 
@@ -63,51 +61,92 @@
             </div>
 
             <div class="form-input">
-                <input type="text" id="phoneNumber" name="phoneNumber" placeholder="Your Phone Number:"
+                <input type="text" id="phoneNumber" name="phone" placeholder="Your Phone Number:"
                     onkeyup="validateNumber()" />
                 <span id="phone-error"></span>
                 <br />
             </div>
-
-
             <div class="form-input">
                 <div class="select">
-                    <select name="format" id="format">
-                        <option selected disabled>Choose your gender:</option>
-                        <option value="pdf">Male</option>
-                        <option value="txt">Female</option>
-                        <option value="epub">LGBTQ</option>
-                        <option value="fb2">Other</option>
+                    <select name="gender" id="format">
+                        <option selected value="M">Male</option>
+                        <option value="F">Female</option>
+                        <option value="O">Other</option>
                     </select>
                 </div>
                 <br>
             </div>
 
             <div class="form-input">
-                <input placeholder="Date of Birth:" class="textbox-n" type="text" onfocus="(this.type='date')" id="date"
-                    name="date" />
+                <input placeholder="Date of Birth:" class="textbox-n" type="text" onfocus="(this.type='date')" id="date" name="dob" />
 
-                <!-- <span id="coupon-error"></span> -->
+                <span id="date-error"></span>
                 <br>
             </div>
 
-            <div class="form-input">
-                <input placeholder="Your Speciality" type="text" id="date" name="Problem" />
-                <!-- <span id="coupon-error"></span> -->
-                <br>
-            </div>
+            <!--=============== CHOOSING PROBLEMS ===============-->
 
-            <div class="form-input">
-                <input placeholder="Your Education" type="text" id="date" name="Problem" />
-                <!-- <span id="coupon-error"></span> -->
-                <br>
-            </div>
+<!--            <p class="choice">Choose the problems that apply to you:</p>-->
+<!--            <div class="form-input">-->
+<!--                <input type="checkbox" class="nomargin" id="anxiety" name="anxiety" value="Anxiety Disorder">-->
+<!--                <label class="checklabel" for="anxiety">Anxiety Disorder</label>-->
+<!--                <br>-->
 
-            <div class="form-input">
-                <input type="number" id="id" name="id" placeholder="Your Licence Id:" onkeyup="validateId()" />
-                <span id="id-error"></span>
-                <br>
-            </div>
+<!--                <input type="checkbox" class="nomargin" id="adhd" name="adhd" value="adhd">-->
+<!--                <label class="checklabel" for="adhd">ADHD</label>-->
+<!--                <br>-->
+
+<!--                <input type="checkbox" class="nomargin" id="ocd" name="behavorial" value="behavorial">-->
+<!--                <label class="checklabel" for="behavorial">Behavorial and Anxiety Disorder Among Children</label>-->
+<!--                <br>-->
+
+<!--                <input type="checkbox" class="nomargin" id="bipolar" name="bipolar" value="bipolar">-->
+<!--                <label class="checklabel" for="bipolar">Bipolar Effective Disorder</label>-->
+<!--                <br>-->
+
+<!--                <input type="checkbox" class="nomargin" id="dissociation" name="dissociation"-->
+<!--                    value="dissociation and dissociative disorder">-->
+<!--                <label class="checklabel" for="dissociation">Dissociation and Dissociative Disorder</label>-->
+<!--                <br>-->
+
+<!--                <input type="checkbox" class="nomargin" id="eating" name="eating" value="eating disorder">-->
+<!--                <label class="checklabel" for="eating">Eating Disorder</label>-->
+<!--                <br>-->
+
+<!--                <input type="checkbox" class="nomargin" id="ocd" name="ocd" value="ocd">-->
+<!--                <label class="checklabel" for="ocd">Obsessive Compulsive Disorder OCD</label>-->
+<!--                <br>-->
+
+<!--                <input type="checkbox" class="nomargin" id="paranoia" name="paranoia" value="paranoia">-->
+<!--                <label class="checklabel" for="paranoia">Paranoia </label>-->
+<!--                <br>-->
+
+<!--                <input type="checkbox" class="nomargin" id="schizophernia" name="schizophernia" value="schizophernia">-->
+<!--                <label class="checklabel" for="schizophernia">Schizophernia </label>-->
+<!--                <br>-->
+
+<!--                <input type="checkbox" class="nomargin" id="unknown" name="unknown" value="unknown">-->
+<!--                <label class="checklabel" for="unknown">Unknown</label>-->
+<!--                <br>-->
+
+<!--                <input type="checkbox" class="nomargin" id="other" name="other" value="other">-->
+<!--                <label class="checklabel" for="other">Other</label>-->
+<!--                <br>-->
+
+<!--            </div>-->
+<!--            <div class="form-input">-->
+<!--                <input placeholder="Problem Description" class="textarea" type="textarea" id="date" name="Problem" />-->
+<!--            <div class="form-input">-->
+<!--                <input placeholder="Problem Description" class="textarea" type="textarea" id="problem" name="problem"-->
+<!--                    onkeyup="validateProblem()" />-->
+<!--                <span id="problem-error"></span>-->
+<!--                <br>-->
+<!--            </div>-->
+
+<!--                &lt;!&ndash; <span id="coupon-error"></span> &ndash;&gt;-->
+<!--                <br>-->
+<!--            </div>-->
+
 
             <div class="form-input">
                 <div class="eye"><i class='fa fa-eye' onclick="passwordVisible()"></i></div>
@@ -117,28 +156,11 @@
                 <span id="password-error"></span>
                 <br>
             </div>
-
-
-
             <button type="submit" class="mainButton" id="formSubmit" onclick="return validateForm()">continue</button>
             <span id="submission-error"></span> <br>
         </form>
 
-        <!-- <p class="Or">Or continue with</p>
-
-        <div class="loginIcons">
-            <div class="icon" id="icon1" style="background-image: url('ASSETS/loginPage/Frame\ 15.svg');">
-
-            </div>
-            <div class="icon" id="icon2" style="background-image: url('ASSETS/loginPage/Frame\ 16.svg');">
-
-            </div>
-            <div class="icon" id="icon3" style="background-image: url('ASSETS/loginPage/Frame\ 17.svg');">
-
-            </div>
-        </div> -->
-
-        <p class="createAccount">Already have an account? </p> <a href="#ForgotPassword.html">
+        <p class="createAccount">Already have an account? </p> <a href="{% url 'login' %}">
             <h5> Login Here</h5>
         </a>
         <div class="spacing"></div>
@@ -146,17 +168,20 @@
 
     <script>
         var idError = document.getElementById('id-error');
+        var addressError = document.getElementById('address-error');
         var firstnameError = document.getElementById('firstname-error');
         var lastnameError = document.getElementById('lastname-error');
-        var usernameError = document.getElementById('username-error');
         var emailError = document.getElementById('email-error');
         var phoneError = document.getElementById('phone-error');
         var passwordError = document.getElementById('password-error');
         var couponError = document.getElementById('coupon-error');
         var submissionError = document.getElementById('submission-error');
+        var dateError = document.getElementById('date-error');
+        var problemError = document.getElementById('problem-error');
         var formSubmit = document.getElementById('formSubmit');
 
-        //Licence ID Validation
+
+        //ID Validation
         function validateId() {
             var id = document.getElementById('id').value;
             if (id.length == 0) {
@@ -202,18 +227,18 @@
             return true;
         }
 
-        //User Name Validation
-        function validateUsername() {
-            var username = document.getElementById('username').value;
-            if (username.length == 0) {
-                usernameError.innerHTML = "Username is required!"
+        //Address Validation 
+        function validateAddress() {
+            var address = document.getElementById('address').value;
+            if (address.length == 0) {
+                addressError.innerHTML = "Address is required!"
                 return false;
             }
-            if (!username.match(/^[a-zA-Z0-9]+$/)) {
-                usernameError.innerHTML = "Characters and spaces aren't allowed!"
+            if (!address.match(/^[a-zA-Z]+ [a-zA-Z]+$/)) {
+                addressError.innerHTML = "Write address in two words!"
                 return false;
             }
-            usernameError.innerHTML = "<i class='fa fa-check-circle'></i>";
+            addressError.innerHTML = "<i class='fa fa-check-circle'></i>";
             return true;
         }
 
@@ -253,6 +278,31 @@
             return true;
         }
 
+
+        //Date Name Validation
+        function validateDate() {
+            var date = document.getElementById('date').value;
+            if (date.length == 0) {
+                dateError.innerHTML = "Date is required!"
+                return false;
+            }
+
+            usernameError.innerHTML = "<i class='fa fa-check-circle'></i>";
+            return true;
+        }
+
+        // Problem Description Validation 
+        function validateProblem() {
+            var problem = document.getElementById('problem').value;
+
+            if (problem.length < 50 || problem.length > 150) {
+                problemError.innerHTML = "Please input the problem between 50 and 150 characters";
+                return false;
+            }
+            problemError.innerHTML = "<i class='fa fa-check-circle'></i>";
+            return true;
+
+        }
 
         //Password Validation
         function validatePassword() {
@@ -302,6 +352,10 @@
             }
         }
     </script>
+
+    <br>
+    <br>
+    <br>
 
 </body>
 

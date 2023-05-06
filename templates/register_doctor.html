@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,18 +35,11 @@
 
         <form method="post" action="" class="form" id="form">
 
+            {% csrf_token %}
 
             <div class="form-input">
-                <input type="text" id="firstname" name="firstname" placeholder="Your First Name:"
-                    onkeyup="validateFirstname()" />
-                <span id="firstname-error"></span>
-                <br>
-            </div>
-
-            <div class="form-input">
-                <input type="text" id="lastname" name="lastname" placeholder="Your last name:"
-                    onkeyup="validateLastname()" />
-                <span id="lastname-error"></span>
+                <input type="text" id="fullname" name="fullname" placeholder="Your Name:" onkeyup="validateName()" />
+                <span id="fullname-error"></span>
                 <br>
             </div>
 
@@ -138,7 +132,7 @@
             </div>
         </div> -->
 
-        <p class="createAccount">Already have an account? </p> <a href="#ForgotPassword.html">
+        <p class="createAccount">Already have an account? </p> <a href="{% url 'login' %}">
             <h5> Login Here</h5>
         </a>
         <div class="spacing"></div>
@@ -146,8 +140,7 @@
 
     <script>
         var idError = document.getElementById('id-error');
-        var firstnameError = document.getElementById('firstname-error');
-        var lastnameError = document.getElementById('lastname-error');
+        var fullnameError = document.getElementById('fullname-error');
         var usernameError = document.getElementById('username-error');
         var emailError = document.getElementById('email-error');
         var phoneError = document.getElementById('phone-error');
@@ -156,7 +149,7 @@
         var submissionError = document.getElementById('submission-error');
         var formSubmit = document.getElementById('formSubmit');
 
-        //Licence ID Validation
+        //ID Validation
         function validateId() {
             var id = document.getElementById('id').value;
             if (id.length == 0) {
@@ -170,35 +163,18 @@
             idError.innerHTML = "<i class='fa fa-check-circle'></i>";
         }
 
-
-        //User Name Validation
-        function validateFirstname() {
-            var firstname = document.getElementById('firstname').value;
-            if (firstname.length == 0) {
-                firstname.innerHTML = "Name is required!"
+        //Full Name Validation
+        function validateName() {
+            var fullname = document.getElementById('fullname').value;
+            if (fullname.length == 0) {
+                fullnameError.innerHTML = "Full name is required!"
                 return false;
             }
-            if (!firstname.match(/^[a-zA-Z0-9]+$/)) {
-                firstnameError.innerHTML = "Characters and spaces aren't allowed!"
+            if (!fullname.match(/^[a-zA-Z]+ [a-zA-Z]+$/)) {
+                fullnameError.innerHTML = "Write first and last name!"
                 return false;
             }
-            firstnameError.innerHTML = "<i class='fa fa-check-circle'></i>";
-            return true;
-        }
-
-
-        //Last Name Validation
-        function validateLastname() {
-            var lastname = document.getElementById('lastname').value;
-            if (lastname.length == 0) {
-                lastnameError.innerHTML = "Name is required!"
-                return false;
-            }
-            if (!lastname.match(/^[a-zA-Z0-9]+$/)) {
-                lastnameError.innerHTML = "Characters and spaces aren't allowed!"
-                return false;
-            }
-            lastnameError.innerHTML = "<i class='fa fa-check-circle'></i>";
+            fullnameError.innerHTML = "<i class='fa fa-check-circle'></i>";
             return true;
         }
 

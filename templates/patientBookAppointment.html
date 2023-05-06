@@ -38,20 +38,13 @@
             </div> -->
 
 
-
             <div class="form-input">
-                <input type="text" id="firstname" name="firstname" placeholder="Your First Name:"
-                    onkeyup="validateFirstname()" />
-                <span id="firstname-error"></span>
+                <input type="text" id="fullname" name="fullname" placeholder="Your Full Name:"
+                    onkeyup="validateFullName()" />
+                <span id="address-error"></span>
                 <br>
             </div>
 
-            <div class="form-input">
-                <input type="text" id="lastname" name="lastname" placeholder="Your last name:"
-                    onkeyup="validateLastname()" />
-                <span id="lastname-error"></span>
-                <br>
-            </div>
 
             <div class="form-input">
                 <input type="text" id="address" name="address" placeholder="Your Address:"
@@ -237,6 +230,22 @@
             return true;
         }
 
+        //Address Fullname 
+        function validateFullName() {
+            var fullname = document.getElementById('fullname').value;
+            if (address.length == 0) {
+                fullnameError.innerHTML = "Full Name is required!"
+                return false;
+            }
+            if (!address.match(/^[a-zA-Z]+ [a-zA-Z]+$/)) {
+                addressError.innerHTML = "Write full name in at least two words!"
+                return false;
+            }
+            addressError.innerHTML = "<i class='fa fa-check-circle'></i>";
+            return true;
+        }
+
+
         //Address Validation 
         function validateAddress() {
             var address = document.getElementById('address').value;
@@ -251,6 +260,8 @@
             addressError.innerHTML = "<i class='fa fa-check-circle'></i>";
             return true;
         }
+
+
 
         //Number Validation
         function validateNumber() {
